@@ -23,7 +23,7 @@ struct WindowBuilder {
         self.init(title: title, window: window)
     }
     
-    func setTitle(_ title: String) -> WindowBuilder{
+    func setTitle(_ title: String) -> WindowBuilder {
         window.title = title
         return self
     }
