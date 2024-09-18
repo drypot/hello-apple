@@ -33,6 +33,7 @@ class CodeListController: NSViewController {
             nextY -= buttonHeight + padding
         }
 
+        addButton("WindowController")
         addButton("TableView")
     }
     
@@ -43,26 +44,14 @@ class CodeListController: NSViewController {
     
     @objc func buttonClicked(_ sender: NSButton) {
         switch sender.title {
+        case "WindowController":
+            showWindowControllerDemo()
         case "TableView":
-            showViewController(TableViewController(), title: sender.title)
+            showTableViewDemo()
         default:
             print("\(sender.title) clicked")
         }
     }
-    
-    func showViewController(_ controller: NSViewController, title: String) {
-        let window = NSWindow(
-            contentRect: .zero,
-            styleMask: [.titled, .closable, .resizable],
-            backing: .buffered,
-            defer: false
-        )
-        window.title = title
 
-        let windowController = NSWindowController(window: window)
-        windowController.contentViewController = controller
-        WindowLiner(window: windowController.window!).moveToCenter()
-        windowController.showWindow(nil)
-    }
 }
 

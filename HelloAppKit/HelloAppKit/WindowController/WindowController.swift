@@ -7,7 +7,21 @@
 
 import Cocoa
 
-class WindowController: NSWindowController {
+func showWindowControllerDemo() {
+    let window = NSWindow(
+        contentRect: .zero,
+        styleMask: [.titled, .closable, .resizable, /* .miniaturizable */],
+        backing: .buffered,
+        defer: false
+    )
+    window.title = "Window Controller Demo"
+    let windowController = CustomWindowController(window: window)
+    windowController.contentViewController = NSViewController()
+    WindowLiner(window: window).moveToCenter()
+    windowController.showWindow(nil)
+}
+
+class CustomWindowController: NSWindowController {
 
     /*
      아래 3 메서드는 window 가 nib 이나 storyboard 파일을 통해 생성될 때만 실행되는 것 같다.

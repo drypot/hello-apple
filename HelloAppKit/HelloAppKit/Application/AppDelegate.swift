@@ -10,30 +10,19 @@ import Cocoa
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    var windowController: NSWindowController!
-    
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
-        print("AppDelegate applicationDidFinishLaunching")
-
-        let window = NSWindow(
-            contentRect: .zero,
-            styleMask: [.titled, .closable, .resizable],
-            backing: .buffered,
-            defer: false
-        )
-        window.title = "Hello AppKit"
-
-        windowController = NSWindowController(window: window)
-        windowController.contentViewController = CodeListController()
-        WindowLiner(window: windowController.window!).moveToCenter()
-        windowController.showWindow(nil)
-        
+    func applicationWillFinishLaunching(_ notification: Notification) {
+        print("AppDelegate applicationWillFinishLaunching")
 #if DEV
         print("Compiler flag DEV defined")
 #else
         print("Compiler flag DEV not defined")
 #endif
+    }
 
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
+        print("AppDelegate applicationDidFinishLaunching")
+        let viewController = CodeListController()
+        WindowSupport.openNewWindow(viewController: viewController, title: "Hello AppKit")
    }
 
     func applicationWillTerminate(_ aNotification: Notification) {

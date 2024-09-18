@@ -9,6 +9,10 @@ import Cocoa
 
 // Mastering macOS programming, Packt Publishing (2017), 7 장 참고
 
+func showTableViewDemo() {
+    WindowSupport.openNewWindow(viewController: TableViewController(), title: "Table View")
+}
+
 class TableViewController: NSViewController {
 
     var personArrayWrapper = PersonArrayWrapper(content: [
@@ -26,10 +30,14 @@ class TableViewController: NSViewController {
         personArrayWrapper.removeObserver(self, forKeyPath: kContentKeyPath)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print("TableViewController viewDidLoad")
-
+    override func loadView() {
+        super.loadView()
+        print("TableViewController loadView")
+        
+        self.view = NSView(frame: NSRect(x: 0, y: 0, width: 600, height: 300))
+        view.wantsLayer = true
+        //view.layer?.backgroundColor = NSColor.white.cgColor
+            
         personArrayWrapper.addObserver(
             self,
             forKeyPath: kContentKeyPath,
@@ -45,6 +53,7 @@ class TableViewController: NSViewController {
         
         let tableScrollView = NSScrollView(frame: tableRect)
         tableScrollView.documentView = tableView
+        //tableScrollView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableScrollView)
                 
         // Configure table
@@ -62,18 +71,23 @@ class TableViewController: NSViewController {
         tableView.usesAlternatingRowBackgroundColors = true
         
         // Add TextField
-        let infoLabelFrame = NSRect(x: 268, y: 228, width: 192, height: 22)
-        self.infoLabel = NSTextField(frame: infoLabelFrame)
+        let infoLabel = NSTextField(frame: NSRect(x: 268, y: 228, width: 192, height: 22))
+        infoLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(infoLabel)
+        self.infoLabel = infoLabel
         
         // Add Add Button
-        let frame = CGRect(x: 268, y: 178, width: 192, height: 32)
-        let addButton = NSButton(frame: frame)
+        let addButton = NSButton(frame: CGRect(x: 268, y: 178, width: 192, height: 32))
         addButton.bezelStyle = .rounded
         addButton.title = "Add"
         addButton.target = self
         addButton.action = #selector(addButtonClicked)
         view.addSubview(addButton)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print("TableViewController viewDidLoad")
     }
     
     @objc func addButtonClicked() {
