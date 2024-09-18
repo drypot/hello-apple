@@ -32,7 +32,7 @@ func showWindowBuilderDemo() {
             defer: false
         )
         WindowBuilder(title: "Window Liner / Center", window: window)
-            .setSize(NSSize(width: 700, height: 500))
+            .setSize(NSSize(width: 600, height: 400))
             .showAtCenter()
             .retainWindow()
     }();
@@ -46,7 +46,7 @@ func showWindowBuilderDemo() {
             defer: false
         )
         WindowBuilder(title: "Window Liner / Absolute Center", window: window)
-            .setSize(NSSize(width: 700, height: 500))
+            .setSize(NSSize(width: 500, height: 300))
             .showAtAbsoluteCenter()
             .retainWindow()
     }();
