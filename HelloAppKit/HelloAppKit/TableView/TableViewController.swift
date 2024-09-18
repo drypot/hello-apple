@@ -9,11 +9,6 @@ import Cocoa
 
 // Mastering macOS programming, Packt Publishing (2017), 7 장 참고
 
-func showTableViewDemo() {
-    let window = WindowSupport.openNewWindow(viewController: TableViewController(), title: "Table View")
-    WindowKeeper.shared.add(window)
-}
-
 class TableViewController: NSViewController {
 
     var personArrayWrapper = PersonArrayWrapper(content: [

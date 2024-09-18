@@ -7,22 +7,6 @@
 
 import Cocoa
 
-func showWindowControllerDemo() {
-    let window = NSWindow(
-        contentRect: .zero,
-        styleMask: [.titled, .closable, .resizable, /* .miniaturizable */],
-        backing: .buffered,
-        defer: false
-    )
-    window.title = "Window Controller Demo"
-    
-    let windowController = CustomWindowController(window: window)
-    windowController.contentViewController = NSViewController()
-    WindowLiner(window: window).moveToCenter()
-    windowController.showWindow(nil)
-    WindowKeeper.shared.add(windowController)
-}
-
 class CustomWindowController: NSWindowController {
 
     /*

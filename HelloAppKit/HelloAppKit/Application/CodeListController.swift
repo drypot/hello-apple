@@ -34,7 +34,7 @@ class CodeListController: NSViewController {
         }
 
         addButton("WindowController")
-        addButton("WindowLiner")
+        addButton("WindowBuilder")
         addButton("TableView")
     }
     
@@ -47,8 +47,8 @@ class CodeListController: NSViewController {
         switch sender.title {
         case "WindowController":
             showWindowControllerDemo()
-        case "WindowLiner":
-            showWindowLinerDemo()
+        case "WindowBuilder":
+            showWindowBuilderDemo()
         case "TableView":
             showTableViewDemo()
         default:
