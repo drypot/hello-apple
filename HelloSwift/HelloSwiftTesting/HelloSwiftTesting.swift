@@ -9,8 +9,7 @@ import Testing
 
 struct HelloSwiftTesting {
 
-    @Test
-    func example() async throws {
+    @Test func example() async throws {
         #expect("abc" == "abc")
     }
 
