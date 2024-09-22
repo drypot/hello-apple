@@ -12,11 +12,40 @@ class CodeListController: NSViewController {
     override func loadView() {
         print("CodeListController loadView")
 
-        view = NSView(frame: NSRect(x: 0, y: 0, width: 800, height: 600))
+        view = NSView()
+
+        let constraints = ConstraintBuilder()
+
+        let stackView = NSStackView()
+        stackView.orientation = .vertical
+        view.addSubview(stackView)
+        constraints.addFillParent(parent: view, child: stackView)
+        
+        func addButton(_ title: String) {
+            let button: NSButton = NSButton(title: title, target: self, action: #selector(buttonClicked))
+            button.bezelStyle = .rounded
+            stackView.addArrangedSubview(button)
+        }
+
+        addButton("WindowController")
+        addButton("WindowBuilder")
+        addButton("ConstraintBuilder")
+        addButton("Stacker")
+        addButton("TableView")
+        addButton("TextView")
+        
+        constraints.activate()
+    }
+    
+    /*
+    func loadView() {
+        print("CodeListController loadView")
+
+        view = NSView()
 //        view.wantsLayer = true
 //        view.layer?.backgroundColor = NSColor.white.cgColor
 
-        var viewLiner = ViewLiner(view)
+        let viewLiner = ViewLiner(view)
         
         func addButton(_ title: String) {
             var button: NSButton
@@ -24,14 +53,16 @@ class CodeListController: NSViewController {
             button = NSButton(title: title, target: self, action: #selector(buttonClicked))
             button.bezelStyle = .rounded
             self.view.addSubview(button)
-            viewLiner.add(child: button, width: 150)
+            viewLiner.lineUpSubview(button, width: 150)
         }
 
         addButton("WindowController")
         addButton("WindowBuilder")
         addButton("ViewLiner")
         addButton("TableView")
+        addButton("TextView")
     }
+    */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,10 +75,14 @@ class CodeListController: NSViewController {
             showWindowControllerDemo()
         case "WindowBuilder":
             showWindowBuilderDemo()
-        case "ViewLiner":
-            showViewLinerDemo()
+        case "ConstraintBuilder":
+            showConstraintBuilderDemo()
+        case "Stacker":
+            showStackerDemo()
         case "TableView":
             showTableViewDemo()
+        case "TextView":
+            showTextViewDemo()
         default:
             print("\(sender.title) clicked")
         }

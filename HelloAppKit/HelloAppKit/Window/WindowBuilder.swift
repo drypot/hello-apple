@@ -39,18 +39,20 @@ struct WindowBuilder {
     }
 
     func showAtCenter() -> WindowBuilder {
+        window.layoutIfNeeded()
         window.center()
         return show()
     }
     
     func showAtAbsoluteCenter() -> WindowBuilder {
+        window.layoutIfNeeded()
         moveWindowToAbsoluteCenter()
         return show()
     }
     
     private func moveWindowToAbsoluteCenter() {
         guard let screen = window.screen ?? NSScreen.main else { return }
-        
+                
         let screenRect = screen.visibleFrame
         let windowSize = window.frame.size
         
