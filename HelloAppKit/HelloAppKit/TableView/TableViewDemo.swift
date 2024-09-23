@@ -31,13 +31,11 @@ class TableViewDemoController: NSViewController, DemoController {
     }
     
     override func loadView() {
-        super.loadView()
-        print("TableViewController loadView")
-        
-        self.view = NSView(frame: NSRect(x: 0, y: 0, width: 600, height: 300))
+        let view = NSView(frame: NSRect(x: 0, y: 0, width: 600, height: 300))
         view.wantsLayer = true
-        //view.layer?.backgroundColor = NSColor.white.cgColor
-            
+
+        self.view = view
+
         personArrayWrapper.addObserver(
             self,
             forKeyPath: kContentKeyPath,

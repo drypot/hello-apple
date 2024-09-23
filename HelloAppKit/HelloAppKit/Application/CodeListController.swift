@@ -18,7 +18,11 @@ class CodeListController: NSViewController {
         let padding = 20.0
         let spacing = 8.0
         
-        view = NSView()
+        // 프로퍼티 view 대신 로컬 변수 view 정의해 두고 쓰면 나중에 필요에 따라 리네임하기 편하다.
+        // parent 라든지 root 등으로.
+        
+        let view = NSView()
+        self.view = view
 
         var constraints: [NSLayoutConstraint] = []
         

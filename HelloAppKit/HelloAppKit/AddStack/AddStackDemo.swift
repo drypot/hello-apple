@@ -19,11 +19,11 @@ class AddStackDemoController: NSViewController, DemoController {
 
         let constraints = ConstraintBuilder()
 
-        addStack(parent: view) { stack in
+        addStack(to: view) { stack in
             stack.orientation = .vertical
-            constraints.addFillParent(parent: view, child: stack)
+            constraints.appendConstrant(for: stack, stickTo: view)
             
-            addStack(parent: stack) { stack in
+            addStack(to: stack) { stack in
                 stack.orientation = .vertical
 
                 let button1 = NSButton(title: "Button 1", target: nil, action: nil)
@@ -36,7 +36,7 @@ class AddStackDemoController: NSViewController, DemoController {
                 stack.addArrangedSubview(button3)
             }
             
-            addStack(parent: stack) { stack in
+            addStack(to: stack) { stack in
                 let button4 = NSButton(title: "Button 4", target: nil, action: nil)
                 stack.addArrangedSubview(button4)
                 

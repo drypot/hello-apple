@@ -14,28 +14,36 @@ class ConstraintBuilder {
         NSLayoutConstraint.activate(constraints)
     }
 
-    func addSize(view: NSView, width: CGFloat, height: CGFloat) {
+    func append(_ constraint: NSLayoutConstraint) {
+        self.constraints.append(constraint)
+    }
+    
+    func append(_ constraints: [NSLayoutConstraint]) {
+        self.constraints.append(contentsOf: constraints)
+    }
+    
+    func appendConstrant(for view: NSView, width: CGFloat, height: CGFloat) {
         view.translatesAutoresizingMaskIntoConstraints = false
         constraints.append(view.widthAnchor.constraint(equalToConstant: width))
         constraints.append(view.heightAnchor.constraint(equalToConstant: height))
     }
     
-    func addWidth(view: NSView, width: CGFloat) {
+    func appendConstrant(for view: NSView, width: CGFloat) {
         view.translatesAutoresizingMaskIntoConstraints = false
         constraints.append(view.widthAnchor.constraint(equalToConstant: width))
     }
     
-    func addHeight(view: NSView, height: CGFloat) {
+    func appendConstrant(for view: NSView, height: CGFloat) {
         view.translatesAutoresizingMaskIntoConstraints = false
         constraints.append(view.heightAnchor.constraint(equalToConstant: height))
     }
     
-    func addFillParent(parent: NSView, child: NSView, padding: CGFloat = 20) {
-        child.translatesAutoresizingMaskIntoConstraints = false
-        child.topAnchor.constraint(equalTo: parent.topAnchor, constant: padding).isActive = true
-        child.bottomAnchor.constraint(equalTo: parent.bottomAnchor, constant: -padding).isActive = true
-        child.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: padding).isActive = true
-        child.trailingAnchor.constraint(equalTo: parent.trailingAnchor, constant: -padding).isActive = true
+    func appendConstrant(for view: NSView, stickTo parent: NSView, padding: CGFloat = 20) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.topAnchor.constraint(equalTo: parent.topAnchor, constant: padding).isActive = true
+        view.bottomAnchor.constraint(equalTo: parent.bottomAnchor, constant: -padding).isActive = true
+        view.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: padding).isActive = true
+        view.trailingAnchor.constraint(equalTo: parent.trailingAnchor, constant: -padding).isActive = true
     }
 
     /*

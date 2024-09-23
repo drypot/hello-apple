@@ -22,7 +22,7 @@ class ConstraintBuilderDemoController: NSViewController, DemoController {
         let stack = NSStackView()
         stack.orientation = .vertical
         view.addSubview(stack)
-        constraints.addFillParent(parent: view, child: stack)
+        constraints.appendConstrant(for: stack, stickTo: view)
         
         let button1 = NSButton(title: "Button 1", target: nil, action: nil)
         stack.addArrangedSubview(button1)
