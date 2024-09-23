@@ -9,15 +9,13 @@ import AppKit
 
 // Mastering macOS programming-Packt Publishing (2017), 209p
 
-func showTextViewDemo() {
-    WindowBuilder(title: "TextView Demo", viewController: TextViewDemoController()).showAtCenter().retainWindow()
-}
+class TextViewDemoController: NSViewController, DemoController {
 
-class TextViewDemoController: NSViewController {
+    static func showDemo() {
+        DemoWindowManager.shared.makeWindow("TextView Demo", Self())
+    }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func loadView() {
         view = NSView()
 
         let padding = 20.0

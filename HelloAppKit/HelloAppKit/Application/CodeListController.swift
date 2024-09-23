@@ -12,80 +12,63 @@ class CodeListController: NSViewController {
     override func loadView() {
         print("CodeListController loadView")
 
+        // ConstraintBuilder 나 addStack 쓸 수도 있지만
+        // AppKit 기본 예를 적어두기 위해 날쌩 NSLayoutConstraint 을 쓰기로 한다.
+        
+        let padding = 20.0
+        let spacing = 8.0
+        
         view = NSView()
 
-        let constraints = ConstraintBuilder()
-
-        let stackView = NSStackView()
-        stackView.orientation = .vertical
-        view.addSubview(stackView)
-        constraints.addFillParent(parent: view, child: stackView)
+        var constraints: [NSLayoutConstraint] = []
+        
+        let stack = NSStackView()
+        stack.orientation = .vertical
+        stack.spacing = spacing
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stack)
+        
+        constraints.append(contentsOf: [
+            stack.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
+            stack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
+            stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+        ])
         
         func addButton(_ title: String) {
             let button: NSButton = NSButton(title: title, target: self, action: #selector(buttonClicked))
             button.bezelStyle = .rounded
-            stackView.addArrangedSubview(button)
+            //button.translatesAutoresizingMaskIntoConstraints = false
+            stack.addArrangedSubview(button)
+            constraints.append(contentsOf: [
+                button.widthAnchor.constraint(equalToConstant: 200),
+                //button.heightAnchor.constraint(equalToConstant: 30),
+            ])
         }
 
-        addButton("WindowController")
+        addButton("Window")
         addButton("WindowBuilder")
         addButton("ConstraintBuilder")
-        addButton("Stacker")
+        addButton("AddStack")
         addButton("TableView")
         addButton("TextView")
         
-        constraints.activate()
+        NSLayoutConstraint.activate(constraints)
     }
-    
-    /*
-    func loadView() {
-        print("CodeListController loadView")
-
-        view = NSView()
-//        view.wantsLayer = true
-//        view.layer?.backgroundColor = NSColor.white.cgColor
-
-        let viewLiner = ViewLiner(view)
         
-        func addButton(_ title: String) {
-            var button: NSButton
-            
-            button = NSButton(title: title, target: self, action: #selector(buttonClicked))
-            button.bezelStyle = .rounded
-            self.view.addSubview(button)
-            viewLiner.lineUpSubview(button, width: 150)
-        }
-
-        addButton("WindowController")
-        addButton("WindowBuilder")
-        addButton("ViewLiner")
-        addButton("TableView")
-        addButton("TextView")
-    }
-    */
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("CodeListController viewDidLoad")
     }
     
     @objc func buttonClicked(_ sender: NSButton) {
-        switch sender.title {
-        case "WindowController":
-            showWindowControllerDemo()
-        case "WindowBuilder":
-            showWindowBuilderDemo()
-        case "ConstraintBuilder":
-            showConstraintBuilderDemo()
-        case "Stacker":
-            showStackerDemo()
-        case "TableView":
-            showTableViewDemo()
-        case "TextView":
-            showTextViewDemo()
-        default:
-            print("\(sender.title) clicked")
+        let moduleName = Bundle.main.infoDictionary!["CFBundleName"] as! String
+        let typeName = moduleName + "." + sender.title + "DemoController"
+        guard let demoType = NSClassFromString(typeName) as? DemoController.Type else {
+            print("demo type not found for \(typeName)")
+            return
         }
+        demoType.showDemo()
     }
 
 }

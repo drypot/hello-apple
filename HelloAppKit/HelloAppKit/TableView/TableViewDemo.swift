@@ -9,12 +9,12 @@ import Cocoa
 
 // Mastering macOS programming, Packt Publishing (2017), 7 장 참고
 
-func showTableViewDemo() {
-    WindowBuilder(title: "Table View", viewController: TableViewDemoController()).showAtCenter().retainWindow()
-}
+class TableViewDemoController: NSViewController, DemoController {
 
-class TableViewDemoController: NSViewController {
-
+    static func showDemo() {
+        DemoWindowManager.shared.makeWindow("Table View", Self())
+    }
+    
     var personArrayWrapper = PersonArrayWrapper(content: [
         Person(name: "Kirk", busy: true, shirtColor: .blue),
         Person(name: "Scottie", busy: false, shirtColor: .red),

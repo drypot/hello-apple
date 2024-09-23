@@ -7,12 +7,12 @@
 
 import AppKit
 
-func showStackerDemo() {
-    WindowBuilder(title: "Stacker", viewController: StackerDemoController()).showAtCenter().retainWindow()
-}
+class AddStackDemoController: NSViewController, DemoController {
 
-class StackerDemoController: NSViewController {
-
+    static func showDemo() {
+        DemoWindowManager.shared.makeWindow("Add Stack Demo", Self())
+    }
+    
     override func loadView() {
         
         view = NSView()
@@ -49,28 +49,6 @@ class StackerDemoController: NSViewController {
         }
 
         constraints.activate()
-        
-        
-        /*
-        let group2 = NSView()
-        let groupLiner2 = ViewLiner(group2).setPadding(0).setDirection(.horizontal)
-        
-        let button4 = NSButton(title: "Button 4", target: nil, action: nil)
-        group2.addSubview(button4)
-        groupLiner2.lineUpSubview(button4)
-
-        let button5 = NSButton(title: "Button 5", target: nil, action: nil)
-        group2.addSubview(button5)
-        groupLiner2.lineUpSubview(button5)
-
-        let button6 = NSButton(title: "Button 6", target: nil, action: nil)
-        group2.addSubview(button6)
-        groupLiner2.lineUpSubview(button6)
-        
-        view.addSubview(group2)
-        viewLiner.lineUpSubview(group2)
-*/
-
     }
     
 }
