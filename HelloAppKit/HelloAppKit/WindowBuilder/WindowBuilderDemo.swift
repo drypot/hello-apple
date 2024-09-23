@@ -11,7 +11,7 @@ class WindowBuilderDemoController: NSViewController, DemoController {
     
     static func showDemo() {
         
-        {
+        do {
             // show center
             let window = NSWindow(
                 contentRect: .zero,
@@ -23,9 +23,9 @@ class WindowBuilderDemoController: NSViewController, DemoController {
                 .setSize(NSSize(width: 600, height: 700))
                 .showAtCenter()
                 .retainWindow()
-        }();
+        }
         
-        {
+        do {
             // show absolute center
             let window = NSWindow(
                 contentRect: .zero,
@@ -37,9 +37,9 @@ class WindowBuilderDemoController: NSViewController, DemoController {
                 .setSize(NSSize(width: 400, height: 150))
                 .showAtAbsoluteCenter()
                 .retainWindow()
-        }();
+        }
         
-        {
+        do {
             // with ViewController
             WindowBuilder(
                 title: "WindowBuilder / with ViewController",
@@ -48,7 +48,7 @@ class WindowBuilderDemoController: NSViewController, DemoController {
             .setSize(NSSize(width: 700, height: 200))
             .showAtCenter()
             .retainWindow()
-        }();
+        }
         
     }
     
