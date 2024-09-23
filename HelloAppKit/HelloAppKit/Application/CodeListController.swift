@@ -10,10 +10,9 @@ import Cocoa
 class CodeListController: NSViewController {
     
     override func loadView() {
-        print("CodeListController loadView")
 
-        // ConstraintBuilder 나 addStack 쓸 수도 있지만
-        // AppKit 기본 예를 적어두기 위해 날쌩 NSLayoutConstraint 을 쓰기로 한다.
+        // 수제 라이브러리 대신 AppKit 기본만 쓰기로 한다.
+        // 나중에 AppKit 가이드 쓸 때나 다른 사람들이 학습용도로 보기엔 이게 나을 듯.
         
         let padding = 20.0
         let spacing = 8.0

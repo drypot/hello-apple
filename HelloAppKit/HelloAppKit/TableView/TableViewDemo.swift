@@ -33,7 +33,6 @@ class TableViewDemoController: NSViewController, DemoController {
     override func loadView() {
         let view = NSView(frame: NSRect(x: 0, y: 0, width: 600, height: 300))
         view.wantsLayer = true
-
         self.view = view
 
         personArrayWrapper.addObserver(
@@ -83,31 +82,29 @@ class TableViewDemoController: NSViewController, DemoController {
         view.addSubview(addButton)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print("TableViewController viewDidLoad")
-    }
-    
     @objc func addButtonClicked() {
         print("addButtonClicked")
         let person = Person(name: "Lt. Uhura", busy: true, shirtColor: .red)
         self.personArrayWrapper.add(person: person)
     }
     
-    override func observeValue(forKeyPath keyPath: String?,
-                                of object: Any?,
-                                change: [NSKeyValueChangeKey : Any]?,
-                                context: UnsafeMutableRawPointer?)
-    {
+    override func observeValue(
+        forKeyPath keyPath: String?,
+        of object: Any?,
+        change: [NSKeyValueChangeKey : Any]?,
+        context: UnsafeMutableRawPointer?
+    ) {
         print("observeValue")
         if keyPath == kContentKeyPath {
             tableView.reloadData()
             return
         }
-        super.observeValue(forKeyPath: keyPath,
-                           of: object,
-                           change: change,
-                           context: context)
+        super.observeValue(
+            forKeyPath: keyPath,
+            of: object,
+            change: change,
+            context: context
+        )
     }
     
 }
@@ -122,8 +119,11 @@ extension TableViewDemoController: NSTableViewDataSource {
 
 extension TableViewDemoController: NSTableViewDelegate {
     
-    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView?
-    {
+    func tableView(
+        _ tableView: NSTableView,
+        viewFor tableColumn: NSTableColumn?,
+        row: Int) -> NSView? {
+            
         if tableColumn == tableView.tableColumns[0] {
             let cellIdentifier = NSUserInterfaceItemIdentifier("NameCellID")
             var cell = tableView.makeView(withIdentifier: cellIdentifier, owner: self) as? NSTextField
@@ -139,7 +139,8 @@ extension TableViewDemoController: NSTableViewDelegate {
                 cell.isEditable = false
             }
             return cell
-        } 
+        }
+            
         if tableColumn == tableView.tableColumns[1] {
             let cellIdentifier = NSUserInterfaceItemIdentifier("StatusCellID")
             var cell = tableView.makeView(withIdentifier: cellIdentifier, owner: self) as? NSTextField
@@ -169,4 +170,5 @@ extension TableViewDemoController: NSTableViewDelegate {
             self.infoLabel.stringValue = personArrayWrapper.content[index].name
         }
     }
+    
 }

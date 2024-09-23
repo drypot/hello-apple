@@ -14,8 +14,8 @@ class ConstraintBuilderDemoController: NSViewController, DemoController {
     }
     
     override func loadView() {
-        
-        view = NSView()
+        let view = NSView()
+        self.view = view
 
         let constraints = ConstraintBuilder()
 
