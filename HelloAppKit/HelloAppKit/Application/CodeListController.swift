@@ -55,6 +55,7 @@ class CodeListController: NSViewController {
         addButton("AddStack")
         addButton("TableView")
         addButton("TextView")
+        addButton("CustomTextView")
         
         NSLayoutConstraint.activate(constraints)
     }
