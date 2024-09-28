@@ -10,7 +10,7 @@ import AppKit
 class ConstraintBuilderDemoController: NSViewController, DemoController {
 
     static func showDemo() {
-        DemoWindowManager.shared.makeWindow("ConstraintBuilder Demo", Self())
+        DemoWindowManager.shared.makeWindow(title: "ConstraintBuilder Demo", viewController: Self())
     }
     
     override func loadView() {

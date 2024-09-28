@@ -12,7 +12,7 @@ import Cocoa
 class TableViewDemoController: NSViewController, DemoController {
 
     static func showDemo() {
-        DemoWindowManager.shared.makeWindow("Table View", Self())
+        DemoWindowManager.shared.makeWindow(title: "Table View", viewController: Self())
     }
     
     var personArrayWrapper = PersonArrayWrapper(content: [

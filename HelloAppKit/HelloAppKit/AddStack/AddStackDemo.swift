@@ -10,7 +10,7 @@ import AppKit
 class AddStackDemoController: NSViewController, DemoController {
 
     static func showDemo() {
-        DemoWindowManager.shared.makeWindow("Add Stack Demo", Self())
+        DemoWindowManager.shared.makeWindow(title: "Add Stack Demo", viewController: Self())
     }
     
     override func loadView() {

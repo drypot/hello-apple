@@ -12,7 +12,7 @@ import AppKit
 class TextViewDemoController: NSViewController, DemoController {
 
     static func showDemo() {
-        DemoWindowManager.shared.makeWindow("TextView Demo", Self())
+        DemoWindowManager.shared.makeWindow(title: "TextView Demo", viewController: Self())
     }
 
     override func loadView() {
