@@ -1,0 +1,68 @@
+//
+//  GestureRecognizerDemoController.swift
+//  HelloAppKit
+//
+//  Created by Kyuhyun Park on 9/30/24.
+//
+
+import AppKit
+
+class GestureRecognizerDemoController: NSViewController, DemoViewController {
+    
+    let padding: CGFloat = 20.0
+    let spacing: CGFloat = 8.0
+    
+    var childView1: NSView!
+    
+    static func showDemo() {
+        DemoWindowManager.shared.makeWindow(title: "GestureRecognizer Demo", viewController: Self())
+    }
+    
+    override func loadView() {
+        let view = NSView()
+        view.wantsLayer = true
+        view.layer?.backgroundColor = .white
+        self.view = view
+        
+        let stackView = NSStackView()
+        stackView.orientation = .vertical
+        stackView.spacing = spacing
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackView)
+        
+        addSubviews(to: stackView)
+        
+        NSLayoutConstraint.activate([
+            stackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 600),
+            stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200),
+            
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+        ])
+    }
+    
+    private func addSubviews(to stackView: NSStackView) {
+        let childView1 = NSView()
+        self.childView1 = childView1
+        childView1.wantsLayer = true
+        childView1.layer?.backgroundColor = NSColor.red.cgColor
+        childView1.translatesAutoresizingMaskIntoConstraints = false
+        stackView.addArrangedSubview(childView1)
+        
+        NSLayoutConstraint.activate([
+            childView1.widthAnchor.constraint(greaterThanOrEqualToConstant: 100),
+            childView1.heightAnchor.constraint(greaterThanOrEqualToConstant: 100),
+        ])
+        
+        let clickGestureRecognizer = NSClickGestureRecognizer(target: self, action: #selector(handleClick(_:)))
+        childView1.addGestureRecognizer(clickGestureRecognizer)
+    }
+
+    @objc func handleClick(_ sender: NSClickGestureRecognizer) {
+        let locationInView = sender.location(in: childView1)
+        print("Mouse clicked at: \(locationInView)")
+    }
+
+}

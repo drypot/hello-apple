@@ -61,6 +61,7 @@ class DemoListController: NSViewController {
         addButton("TextView")
         addButton("CustomTextView")
         addButton("CustomView")
+        addButton("GestureRecognizer")
         
         NSLayoutConstraint.activate(constraints)
     }
