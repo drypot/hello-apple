@@ -42,45 +42,41 @@ class CustomViewDemoController: NSViewController, DemoViewController {
     }
     
     private func addSubviews(to stackView: NSStackView) {
-//        do {
-//            let customView = CustomView(color: .blue)
-//            customView.translatesAutoresizingMaskIntoConstraints = false
-//            stackView.addArrangedSubview(customView)
-//            
-//            NSLayoutConstraint.activate([
-//                customView.widthAnchor.constraint(greaterThanOrEqualToConstant: 100),
-//                customView.heightAnchor.constraint(equalToConstant: 100),
-//            ])
-//        }
+        do {
+            let customView = CustomView(frame: .zero, color: .green)
+            customView.translatesAutoresizingMaskIntoConstraints = false
+            stackView.addArrangedSubview(customView)
+            
+            NSLayoutConstraint.activate([
+                customView.heightAnchor.constraint(equalToConstant: 100),
+            ])
+        }
         
-//        do {
-//            let textView = NSTextView()
-//            textView.string = "Hello, World!"
-//            textView.font = NSFont(name: "Helvetica", size: 24.0)
-//            stackView.addArrangedSubview(textView)
-//            
-//            NSLayoutConstraint.activate([
-//                textView.widthAnchor.constraint(greaterThanOrEqualToConstant: 600),
-//                textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 50),
-//            ])
-//        }
-
-//        do {
-//            let customView = CustomCompositeView()
-//            customView.translatesAutoresizingMaskIntoConstraints = false
-//            stackView.addArrangedSubview(customView)
-//        }
+        do {
+            let customView = CustomCompositeView()
+            customView.translatesAutoresizingMaskIntoConstraints = false
+            stackView.addArrangedSubview(customView)
+        }
         
         do {
             let childView = NSView()
             childView.wantsLayer = true
             childView.layer?.backgroundColor = NSColor.red.cgColor
-            
-            // Add the subview to the stack view
+            childView.translatesAutoresizingMaskIntoConstraints = false
             stackView.addArrangedSubview(childView)
             
-            // Set height constraint for the subview
+            NSLayoutConstraint.activate([
+                childView.heightAnchor.constraint(equalToConstant: 100)
+            ])
+        }
+
+        do {
+            let childView = NSView()
+            childView.wantsLayer = true
+            childView.layer?.backgroundColor = NSColor.blue.cgColor
             childView.translatesAutoresizingMaskIntoConstraints = false
+            stackView.addArrangedSubview(childView)
+            
             NSLayoutConstraint.activate([
                 childView.heightAnchor.constraint(equalToConstant: 100)
             ])
