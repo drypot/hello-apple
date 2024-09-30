@@ -22,26 +22,26 @@ class TextViewDemoController: NSViewController, DemoViewController {
         let view = NSView()
         self.view = view
         
-        let stack = NSStackView()
-        stack.orientation = .vertical
-        stack.spacing = spacing
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(stack)
+        let stackView = NSStackView()
+        stackView.orientation = .vertical
+        stackView.spacing = spacing
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackView)
         
-        addSubviews(to: stack)
+        addSubviews(to: stackView)
         
         NSLayoutConstraint.activate([
-            stack.widthAnchor.constraint(greaterThanOrEqualToConstant: 600),
-            stack.heightAnchor.constraint(greaterThanOrEqualToConstant: 200),
+            stackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 600),
+            stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200),
             
-            stack.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
-            stack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
-            stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
         ])
     }
     
-    private func addSubviews(to stack: NSStackView) {
+    private func addSubviews(to stackView: NSStackView) {
         do {
             let textView = NSTextView()
             textView.string = "Hello, World!"
@@ -49,7 +49,7 @@ class TextViewDemoController: NSViewController, DemoViewController {
             
             textView.widthAnchor.constraint(greaterThanOrEqualToConstant: 600).isActive = true
             textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 50).isActive = true
-            stack.addArrangedSubview(textView)
+            stackView.addArrangedSubview(textView)
         }
         
         do {
@@ -94,7 +94,7 @@ class TextViewDemoController: NSViewController, DemoViewController {
             
             textView.widthAnchor.constraint(greaterThanOrEqualToConstant: 600).isActive = true
             textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 300).isActive = true
-            stack.addArrangedSubview(textView)
+            stackView.addArrangedSubview(textView)
         }
     }
     
@@ -105,14 +105,14 @@ class TextViewDemoController: NSViewController, DemoViewController {
         
         self.view = view
         
-        addStack(to: view) { stack in
-            stack.orientation = .vertical
-            constraints.appendConstrant(for: stack, stickTo: view)
+        addStack(to: view) { stackView in
+            stackView.orientation = .vertical
+            constraints.appendConstrant(for: stackView, stickTo: view)
 
             let textView = NSTextView()
             textView.string = "Hello, World!"
             textView.font = NSFont(name: "Helvetica", size: 24.0)
-            stack.addArrangedSubview(textView)
+            stackView.addArrangedSubview(textView)
             constraints.appendConstrant(for: textView, width: 600, height: 200)
 
             let textView2 = NSTextView()
@@ -123,7 +123,7 @@ class TextViewDemoController: NSViewController, DemoViewController {
                 range: NSRange(location: 6, length: 12)
             )
             textView2.textStorage?.setAttributedString(str2)
-            stack.addArrangedSubview(textView2)
+            stackView.addArrangedSubview(textView2)
             constraints.appendConstrant(for: textView2, width: 600, height: 200)
         }
         

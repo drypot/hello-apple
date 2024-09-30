@@ -37,26 +37,26 @@ class TableViewDemoController: NSViewController, DemoViewController {
         let view = NSView()
         self.view = view
         
-        let stack = NSStackView()
-        stack.orientation = .vertical
-        stack.spacing = spacing
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(stack)
+        let stackView = NSStackView()
+        stackView.orientation = .vertical
+        stackView.spacing = spacing
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackView)
         
-        addSubviews(to: stack)
+        addSubviews(to: stackView)
         
         NSLayoutConstraint.activate([
-            stack.widthAnchor.constraint(greaterThanOrEqualToConstant: 600),
-            stack.heightAnchor.constraint(greaterThanOrEqualToConstant: 400),
+            stackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 600),
+            stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 400),
             
-            stack.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
-            stack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
-            stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
         ])
     }
     
-    private func addSubviews(to stack: NSStackView) {
+    private func addSubviews(to stackView: NSStackView) {
         personArrayWrapper.addObserver(
             self,
             forKeyPath: kContentKeyPath,
@@ -67,7 +67,7 @@ class TableViewDemoController: NSViewController, DemoViewController {
         // Add TextField
         let infoLabel = NSTextField()
         infoLabel.translatesAutoresizingMaskIntoConstraints = false
-        stack.addArrangedSubview(infoLabel)
+        stackView.addArrangedSubview(infoLabel)
         self.infoLabel = infoLabel
         
         // Add Add Button
@@ -76,7 +76,7 @@ class TableViewDemoController: NSViewController, DemoViewController {
         addButton.title = "Add"
         addButton.target = self
         addButton.action = #selector(addButtonClicked)
-        stack.addArrangedSubview(addButton)
+        stackView.addArrangedSubview(addButton)
 
         // Add table
         let tableRect = CGRect(x: 20, y: 115, width: 240, height: 135)
@@ -87,7 +87,7 @@ class TableViewDemoController: NSViewController, DemoViewController {
         let tableScrollView = NSScrollView(frame: tableRect)
         tableScrollView.documentView = tableView
         //tableScrollView.translatesAutoresizingMaskIntoConstraints = false
-        stack.addArrangedSubview(tableScrollView)
+        stackView.addArrangedSubview(tableScrollView)
                 
         // Configure table
         let nameColumn = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "nameColumn"))

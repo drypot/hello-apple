@@ -20,36 +20,36 @@ class DemoListController: NSViewController {
         let view = NSView()
         self.view = view
         
-        let stack = NSStackView()
-        stack.orientation = .vertical
-        stack.spacing = spacing
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(stack)
+        let stackView = NSStackView()
+        stackView.orientation = .vertical
+        stackView.spacing = spacing
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackView)
         
-        addSubviews(to: stack)
+        addSubviews(to: stackView)
         
         NSLayoutConstraint.activate([
-            stack.widthAnchor.constraint(greaterThanOrEqualToConstant: 200),
-            stack.heightAnchor.constraint(greaterThanOrEqualToConstant: 200),
+            stackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 200),
+            stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200),
             
-            stack.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
-            stack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
-            stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
         ])
     }
     
-    private func addSubviews(to stack: NSStackView) {
+    private func addSubviews(to stackView: NSStackView) {
         var constraints: [NSLayoutConstraint] = []
                 
         func addButton(_ title: String) {
             let button: NSButton = NSButton(title: title, target: self, action: #selector(buttonClicked))
             button.bezelStyle = .rounded
             //button.translatesAutoresizingMaskIntoConstraints = false
-            stack.addArrangedSubview(button)
+            stackView.addArrangedSubview(button)
             constraints.append(contentsOf: [
-                button.leadingAnchor.constraint(equalTo: stack.leadingAnchor, constant: 0),
-                button.trailingAnchor.constraint(equalTo: stack.trailingAnchor, constant: 0),
+                button.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 0),
+                button.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 0),
             ])
         }
 

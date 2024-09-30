@@ -19,32 +19,32 @@ class AddStackDemoController: NSViewController, DemoViewController {
 
         let constraints = ConstraintBuilder()
 
-        addStack(to: view) { stack in
-            stack.orientation = .vertical
-            constraints.appendConstrant(for: stack, stickTo: view)
+        addStack(to: view) { stackView in
+            stackView.orientation = .vertical
+            constraints.appendConstrant(for: stackView, stickTo: view)
             
-            addStack(to: stack) { stack in
-                stack.orientation = .vertical
+            addStack(to: stackView) { stackView in
+                stackView.orientation = .vertical
 
                 let button1 = NSButton(title: "Button 1", target: nil, action: nil)
-                stack.addArrangedSubview(button1)
+                stackView.addArrangedSubview(button1)
                 
                 let button2 = NSButton(title: "Button 2", target: nil, action: nil)
-                stack.addArrangedSubview(button2)
+                stackView.addArrangedSubview(button2)
 
                 let button3 = NSButton(title: "Button 3", target: nil, action: nil)
-                stack.addArrangedSubview(button3)
+                stackView.addArrangedSubview(button3)
             }
             
-            addStack(to: stack) { stack in
+            addStack(to: stackView) { stackView in
                 let button4 = NSButton(title: "Button 4", target: nil, action: nil)
-                stack.addArrangedSubview(button4)
+                stackView.addArrangedSubview(button4)
                 
                 let button5 = NSButton(title: "Button 5", target: nil, action: nil)
-                stack.addArrangedSubview(button5)
+                stackView.addArrangedSubview(button5)
 
                 let button6 = NSButton(title: "Button 6", target: nil, action: nil)
-                stack.addArrangedSubview(button6)
+                stackView.addArrangedSubview(button6)
             }
         }
 
