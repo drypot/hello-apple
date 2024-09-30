@@ -22,11 +22,31 @@ class CustomTextViewDemoController: NSViewController, DemoController {
     
     override func loadView() {
         let padding = 20.0
-        //let spacing = 8.0
+        let spacing = 8.0
         
         let view = NSView()
         self.view = view
         
+        let stack = NSStackView()
+        stack.orientation = .vertical
+        stack.spacing = spacing
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stack)
+        
+        addComponents(stack: stack, padding: padding, spacing: spacing)
+        
+        NSLayoutConstraint.activate([
+            stack.widthAnchor.constraint(greaterThanOrEqualToConstant: 600),
+            stack.heightAnchor.constraint(greaterThanOrEqualToConstant: 200),
+            
+            stack.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
+            stack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
+            stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+        ])
+    }
+    
+    private func addComponents(stack: NSStackView, padding: CGFloat, spacing: CGFloat) {
         let container = NSTextContainer()
         container.widthTracksTextView = true
         
@@ -46,17 +66,7 @@ class CustomTextViewDemoController: NSViewController, DemoController {
         textView.font = NSFont.systemFont(ofSize: 24)
         textView.delegate = self
         textView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(textView)
-        
-        NSLayoutConstraint.activate([
-            textView.widthAnchor.constraint(greaterThanOrEqualToConstant: 600),
-            textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200),
-            
-            textView.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
-            textView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
-            textView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            textView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-        ])
+        stack.addArrangedSubview(textView)        
     }
         
 }

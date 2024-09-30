@@ -31,16 +31,52 @@ class TableViewDemoController: NSViewController, DemoController {
     }
     
     override func loadView() {
-        let view = NSView(frame: NSRect(x: 0, y: 0, width: 600, height: 300))
-        view.wantsLayer = true
+        let padding = 20.0
+        let spacing = 8.0
+        
+        let view = NSView()
         self.view = view
-
+        
+        let stack = NSStackView()
+        stack.orientation = .vertical
+        stack.spacing = spacing
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stack)
+        
+        addComponents(stack: stack, padding: padding, spacing: spacing)
+        
+        NSLayoutConstraint.activate([
+            stack.widthAnchor.constraint(greaterThanOrEqualToConstant: 600),
+            stack.heightAnchor.constraint(greaterThanOrEqualToConstant: 400),
+            
+            stack.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
+            stack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
+            stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+        ])
+    }
+    
+    private func addComponents(stack: NSStackView, padding: CGFloat, spacing: CGFloat) {
         personArrayWrapper.addObserver(
             self,
             forKeyPath: kContentKeyPath,
             options:[.new, .old],
             context: &personArrayWrapperContext
         )
+
+        // Add TextField
+        let infoLabel = NSTextField()
+        infoLabel.translatesAutoresizingMaskIntoConstraints = false
+        stack.addArrangedSubview(infoLabel)
+        self.infoLabel = infoLabel
+        
+        // Add Add Button
+        let addButton = NSButton()
+        addButton.bezelStyle = .rounded
+        addButton.title = "Add"
+        addButton.target = self
+        addButton.action = #selector(addButtonClicked)
+        stack.addArrangedSubview(addButton)
 
         // Add table
         let tableRect = CGRect(x: 20, y: 115, width: 240, height: 135)
@@ -51,7 +87,7 @@ class TableViewDemoController: NSViewController, DemoController {
         let tableScrollView = NSScrollView(frame: tableRect)
         tableScrollView.documentView = tableView
         //tableScrollView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(tableScrollView)
+        stack.addArrangedSubview(tableScrollView)
                 
         // Configure table
         let nameColumn = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "nameColumn"))
@@ -66,20 +102,6 @@ class TableViewDemoController: NSViewController, DemoController {
         
         tableView.intercellSpacing = CGSize(width: 5.0, height: 5.0)
         tableView.usesAlternatingRowBackgroundColors = true
-        
-        // Add TextField
-        let infoLabel = NSTextField(frame: NSRect(x: 268, y: 228, width: 192, height: 22))
-        infoLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(infoLabel)
-        self.infoLabel = infoLabel
-        
-        // Add Add Button
-        let addButton = NSButton(frame: CGRect(x: 268, y: 178, width: 192, height: 32))
-        addButton.bezelStyle = .rounded
-        addButton.title = "Add"
-        addButton.target = self
-        addButton.action = #selector(addButtonClicked)
-        view.addSubview(addButton)
     }
     
     @objc func addButtonClicked() {

@@ -7,23 +7,18 @@
 
 import Cocoa
 
+// 수제 라이브러리 대신 AppKit 기본만 쓰기로 한다.
+// 나중에 AppKit 가이드 쓸 때나 다른 사람들이 학습용도로 보기엔 이게 나을 듯.
+// 파일에 반복적으로 중복된 코드가 나타나도 나중에 한눈에 쭉 읽기 편하게 그대로 두는 것도 괜찮은 듯.
+
 class CodeListController: NSViewController {
     
     override func loadView() {
-
-        // 수제 라이브러리 대신 AppKit 기본만 쓰기로 한다.
-        // 나중에 AppKit 가이드 쓸 때나 다른 사람들이 학습용도로 보기엔 이게 나을 듯.
-        
         let padding = 20.0
         let spacing = 8.0
         
-        // 프로퍼티 view 대신 로컬 변수 view 정의해 두고 쓰면 나중에 필요에 따라 리네임하기 편하다.
-        // parent 라든지 root 등으로.
-        
         let view = NSView()
         self.view = view
-
-        var constraints: [NSLayoutConstraint] = []
         
         let stack = NSStackView()
         stack.orientation = .vertical
@@ -31,21 +26,30 @@ class CodeListController: NSViewController {
         stack.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stack)
         
-        constraints.append(contentsOf: [
+        addComponents(stack: stack, padding: padding, spacing: spacing)
+        
+        NSLayoutConstraint.activate([
+            stack.widthAnchor.constraint(greaterThanOrEqualToConstant: 200),
+            stack.heightAnchor.constraint(greaterThanOrEqualToConstant: 200),
+            
             stack.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
             stack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
             stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
         ])
-        
+    }
+    
+    private func addComponents(stack: NSStackView, padding: CGFloat, spacing: CGFloat) {
+        var constraints: [NSLayoutConstraint] = []
+                
         func addButton(_ title: String) {
             let button: NSButton = NSButton(title: title, target: self, action: #selector(buttonClicked))
             button.bezelStyle = .rounded
             //button.translatesAutoresizingMaskIntoConstraints = false
             stack.addArrangedSubview(button)
             constraints.append(contentsOf: [
-                button.widthAnchor.constraint(equalToConstant: 200),
-                //button.heightAnchor.constraint(equalToConstant: 30),
+                button.leadingAnchor.constraint(equalTo: stack.leadingAnchor, constant: 0),
+                button.trailingAnchor.constraint(equalTo: stack.trailingAnchor, constant: 0),
             ])
         }
 
