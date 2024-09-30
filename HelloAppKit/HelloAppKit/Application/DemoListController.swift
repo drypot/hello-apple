@@ -11,7 +11,7 @@ import Cocoa
 // 나중에 AppKit 가이드 쓸 때나 다른 사람들이 학습용도로 보기엔 이게 나을 듯.
 // 파일에 반복적으로 중복된 코드가 나타나도 나중에 한눈에 쭉 읽기 편하게 그대로 두는 것도 괜찮은 듯.
 
-class CodeListController: NSViewController {
+class DemoListController: NSViewController {
     
     override func loadView() {
         let padding = 20.0
@@ -60,6 +60,7 @@ class CodeListController: NSViewController {
         addButton("TableView")
         addButton("TextView")
         addButton("CustomTextView")
+        addButton("CustomView")
         
         NSLayoutConstraint.activate(constraints)
     }
@@ -72,7 +73,7 @@ class CodeListController: NSViewController {
     @objc func buttonClicked(_ sender: NSButton) {
         let moduleName = Bundle.main.infoDictionary!["CFBundleName"] as! String
         let typeName = moduleName + "." + sender.title + "DemoController"
-        guard let demoType = NSClassFromString(typeName) as? DemoController.Type else {
+        guard let demoType = NSClassFromString(typeName) as? DemoViewController.Type else {
             print("demo type not found for \(typeName)")
             return
         }

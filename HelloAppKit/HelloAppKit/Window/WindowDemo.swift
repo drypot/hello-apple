@@ -7,7 +7,7 @@
 
 import AppKit
 
-class WindowDemoController: NSWindowController, DemoController {
+class WindowDemoController: NSWindowController, DemoViewController {
 
     private static var controllers = [NSWindowController]()
 

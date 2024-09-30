@@ -9,7 +9,7 @@ import Cocoa
 
 // Mastering macOS programming, Packt Publishing (2017), 7 장 참고
 
-class TableViewDemoController: NSViewController, DemoController {
+class TableViewDemoController: NSViewController, DemoViewController {
 
     static func showDemo() {
         DemoWindowManager.shared.makeWindow(title: "Table View", viewController: Self())

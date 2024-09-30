@@ -7,7 +7,7 @@
 
 import AppKit
 
-class CustomViewDemoController: NSViewController, DemoController {
+class CustomViewDemoController: NSViewController, DemoViewController {
     
     static func showDemo() {
         DemoWindowManager.shared.makeWindow(title: "CustomView Demo", viewController: Self())
@@ -40,13 +40,8 @@ class CustomViewDemoController: NSViewController, DemoController {
     }
     
     private func addComponents(stack: NSStackView, padding: CGFloat, spacing: CGFloat) {
-        let textView = NSTextView()
-        textView.string = "Hello, World!"
-        textView.font = NSFont(name: "Helvetica", size: 24.0)
-        
-        textView.widthAnchor.constraint(equalToConstant: 600).isActive = true
-        textView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        stack.addArrangedSubview(textView)
+        let customView = CustomView()
+        stack.addArrangedSubview(customView)
     }
         
 }

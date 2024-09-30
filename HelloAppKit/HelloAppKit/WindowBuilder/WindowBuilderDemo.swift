@@ -7,7 +7,7 @@
 
 import AppKit
 
-class WindowBuilderDemoController: NSViewController, DemoController {
+class WindowBuilderDemoController: NSViewController, DemoViewController {
     
     static func showDemo() {
         

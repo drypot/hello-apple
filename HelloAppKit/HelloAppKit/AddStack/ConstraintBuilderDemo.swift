@@ -7,7 +7,7 @@
 
 import AppKit
 
-class ConstraintBuilderDemoController: NSViewController, DemoController {
+class ConstraintBuilderDemoController: NSViewController, DemoViewController {
 
     static func showDemo() {
         DemoWindowManager.shared.makeWindow(title: "ConstraintBuilder Demo", viewController: Self())

@@ -7,7 +7,7 @@
 
 import AppKit
 
-class AddStackDemoController: NSViewController, DemoController {
+class AddStackDemoController: NSViewController, DemoViewController {
 
     static func showDemo() {
         DemoWindowManager.shared.makeWindow(title: "Add Stack Demo", viewController: Self())

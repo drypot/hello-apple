@@ -9,7 +9,7 @@ import AppKit
 
 // Mastering macOS programming-Packt Publishing (2017), 209p
 
-class TextViewDemoController: NSViewController, DemoController {
+class TextViewDemoController: NSViewController, DemoViewController {
 
     static func showDemo() {
         DemoWindowManager.shared.makeWindow(title: "TextView Demo", viewController: Self())

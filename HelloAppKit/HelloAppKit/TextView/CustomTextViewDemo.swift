@@ -12,7 +12,7 @@ import AppKit
 
 // 커서가 워프하는 등, 먼가 버그 스럽게 동작하는데, 일단 대강 구경만 하는 것으로.
 
-class CustomTextViewDemoController: NSViewController, DemoController {
+class CustomTextViewDemoController: NSViewController, DemoViewController {
     
     static func showDemo() {
         DemoWindowManager.shared.makeWindow(title: "CustomTextView Demo", viewController: Self())
@@ -66,7 +66,7 @@ class CustomTextViewDemoController: NSViewController, DemoController {
         textView.font = NSFont.systemFont(ofSize: 24)
         textView.delegate = self
         textView.translatesAutoresizingMaskIntoConstraints = false
-        stack.addArrangedSubview(textView)        
+        stack.addArrangedSubview(textView)
     }
         
 }
