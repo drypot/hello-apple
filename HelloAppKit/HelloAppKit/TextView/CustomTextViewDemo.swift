@@ -14,6 +14,9 @@ import AppKit
 
 class CustomTextViewDemoController: NSViewController, DemoViewController {
     
+    let padding: CGFloat = 20.0
+    let spacing: CGFloat = 8.0
+
     static func showDemo() {
         DemoWindowManager.shared.makeWindow(title: "CustomTextView Demo", viewController: Self())
     }
@@ -21,9 +24,6 @@ class CustomTextViewDemoController: NSViewController, DemoViewController {
     var customTextStorage: CustomTextStorage?
     
     override func loadView() {
-        let padding = 20.0
-        let spacing = 8.0
-        
         let view = NSView()
         self.view = view
         
@@ -33,7 +33,7 @@ class CustomTextViewDemoController: NSViewController, DemoViewController {
         stack.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stack)
         
-        addComponents(stack: stack, padding: padding, spacing: spacing)
+        addSubviews(to: stack)
         
         NSLayoutConstraint.activate([
             stack.widthAnchor.constraint(greaterThanOrEqualToConstant: 600),
@@ -46,7 +46,7 @@ class CustomTextViewDemoController: NSViewController, DemoViewController {
         ])
     }
     
-    private func addComponents(stack: NSStackView, padding: CGFloat, spacing: CGFloat) {
+    private func addSubviews(to stack: NSStackView) {
         let container = NSTextContainer()
         container.widthTracksTextView = true
         

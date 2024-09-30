@@ -12,11 +12,11 @@ import Cocoa
 // 파일에 반복적으로 중복된 코드가 나타나도 나중에 한눈에 쭉 읽기 편하게 그대로 두는 것도 괜찮은 듯.
 
 class DemoListController: NSViewController {
-    
+
+    let padding: CGFloat = 20.0
+    let spacing: CGFloat = 8.0
+
     override func loadView() {
-        let padding = 20.0
-        let spacing = 8.0
-        
         let view = NSView()
         self.view = view
         
@@ -26,7 +26,7 @@ class DemoListController: NSViewController {
         stack.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stack)
         
-        addComponents(stack: stack, padding: padding, spacing: spacing)
+        addSubviews(to: stack)
         
         NSLayoutConstraint.activate([
             stack.widthAnchor.constraint(greaterThanOrEqualToConstant: 200),
@@ -39,7 +39,7 @@ class DemoListController: NSViewController {
         ])
     }
     
-    private func addComponents(stack: NSStackView, padding: CGFloat, spacing: CGFloat) {
+    private func addSubviews(to stack: NSStackView) {
         var constraints: [NSLayoutConstraint] = []
                 
         func addButton(_ title: String) {

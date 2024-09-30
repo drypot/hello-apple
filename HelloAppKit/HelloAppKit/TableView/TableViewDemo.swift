@@ -11,6 +11,9 @@ import Cocoa
 
 class TableViewDemoController: NSViewController, DemoViewController {
 
+    let padding: CGFloat = 20.0
+    let spacing: CGFloat = 8.0
+
     static func showDemo() {
         DemoWindowManager.shared.makeWindow(title: "Table View", viewController: Self())
     }
@@ -31,9 +34,6 @@ class TableViewDemoController: NSViewController, DemoViewController {
     }
     
     override func loadView() {
-        let padding = 20.0
-        let spacing = 8.0
-        
         let view = NSView()
         self.view = view
         
@@ -43,7 +43,7 @@ class TableViewDemoController: NSViewController, DemoViewController {
         stack.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stack)
         
-        addComponents(stack: stack, padding: padding, spacing: spacing)
+        addSubviews(to: stack)
         
         NSLayoutConstraint.activate([
             stack.widthAnchor.constraint(greaterThanOrEqualToConstant: 600),
@@ -56,7 +56,7 @@ class TableViewDemoController: NSViewController, DemoViewController {
         ])
     }
     
-    private func addComponents(stack: NSStackView, padding: CGFloat, spacing: CGFloat) {
+    private func addSubviews(to stack: NSStackView) {
         personArrayWrapper.addObserver(
             self,
             forKeyPath: kContentKeyPath,

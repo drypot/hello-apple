@@ -9,14 +9,14 @@ import AppKit
 
 class CustomViewDemoController: NSViewController, DemoViewController {
     
+    let padding: CGFloat = 20.0
+    let spacing: CGFloat = 8.0
+
     static func showDemo() {
         DemoWindowManager.shared.makeWindow(title: "CustomView Demo", viewController: Self())
     }
     
     override func loadView() {
-        let padding = 20.0
-        let spacing = 8.0
-        
         let view = NSView()
         self.view = view
         
@@ -26,7 +26,7 @@ class CustomViewDemoController: NSViewController, DemoViewController {
         stack.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stack)
         
-        addComponents(stack: stack, padding: padding, spacing: spacing)
+        addSubviews(to: stack)
         
         NSLayoutConstraint.activate([
             stack.widthAnchor.constraint(greaterThanOrEqualToConstant: 600),
@@ -39,7 +39,7 @@ class CustomViewDemoController: NSViewController, DemoViewController {
         ])
     }
     
-    private func addComponents(stack: NSStackView, padding: CGFloat, spacing: CGFloat) {
+    private func addSubviews(to stack: NSStackView) {
         let customView = CustomView()
         stack.addArrangedSubview(customView)
     }
