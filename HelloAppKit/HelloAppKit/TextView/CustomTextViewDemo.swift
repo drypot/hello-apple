@@ -12,15 +12,14 @@ import AppKit
 
 // 커서가 워프하는 등, 먼가 버그 스럽게 동작하는데, 일단 대강 구경만 하는 것으로.
 
-class CustomTextViewDemoController: NSViewController, DemoViewController {
+class CustomTextViewDemoControllerRunner: SubRunner {
+}
+
+class CustomTextViewDemoController: NSViewController {
     
     let padding: CGFloat = 20.0
     let spacing: CGFloat = 8.0
 
-    static func showDemo() {
-        DemoWindowManager.shared.makeWindow(title: "CustomTextView Demo", viewController: Self())
-    }
-    
     var customTextStorage: CustomTextStorage?
     
     override func loadView() {

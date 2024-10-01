@@ -7,14 +7,13 @@
 
 import AppKit
 
-class CustomViewDemoController: NSViewController, DemoViewController {
+class CustomViewDemoControllerRunner: SubRunner {
+}
+
+class CustomViewDemoController: NSViewController {
     
     let padding: CGFloat = 20.0
     let spacing: CGFloat = 8.0
-    
-    static func showDemo() {
-        DemoWindowManager.shared.makeWindow(title: "CustomView Demo", viewController: Self())
-    }
     
     override func loadView() {
         let view = NSView()

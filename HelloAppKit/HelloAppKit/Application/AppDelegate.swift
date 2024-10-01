@@ -21,7 +21,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         print("AppDelegate applicationDidFinishLaunching")
-        WindowBuilder(title: "Hello AppKit", viewController: DemoListController()).showAtCenter().retainWindow()
+        DemoListControllerRunner().run()
+        //WindowBuilder(title: "Hello AppKit", viewController: DemoListController()).showAtCenter().retainWindow()
    }
 
     func applicationWillTerminate(_ aNotification: Notification) {

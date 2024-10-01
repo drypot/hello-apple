@@ -7,10 +7,8 @@
 
 import AppKit
 
-class WindowBuilderDemoController: NSViewController, DemoViewController {
-    
-    static func showDemo() {
-        
+class WindowBuilderDemoControllerRunner: SubRunner {
+    override func run() {
         do {
             // show center
             let window = NSWindow(
@@ -43,22 +41,11 @@ class WindowBuilderDemoController: NSViewController, DemoViewController {
             // with ViewController
             WindowBuilder(
                 title: "WindowBuilder / with ViewController",
-                viewController: Self()
+                viewController: NSViewController()
             )
             .setSize(NSSize(width: 700, height: 200))
             .showAtCenter()
             .retainWindow()
         }
-        
     }
-    
-    override func loadView() {
-        view = NSView()
-        
-//        NSLayoutConstraint.activate([
-//            view.widthAnchor.constraint(equalToConstant: 700),
-//            view.heightAnchor.constraint(equalToConstant: 300),
-//        ])
-    }
-
 }

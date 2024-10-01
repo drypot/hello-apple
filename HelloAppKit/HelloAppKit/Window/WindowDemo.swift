@@ -7,25 +7,28 @@
 
 import AppKit
 
-class WindowDemoController: NSWindowController, DemoViewController {
+class WindowDemoControllerRunner: SubRunner {
 
-    private static var controllers = [NSWindowController]()
+    private var windowControllers = [NSWindowController]()
 
-    static func showDemo() {
+    override func run() {
         let window = NSWindow(
             contentRect: .zero,
             styleMask: [.titled, .closable, .resizable, /* .miniaturizable */],
             backing: .buffered,
             defer: false
         )
-        window.title = "Window Demo"
+        window.title = "Window 1"
         
-        let windowController = WindowDemoController(window: window)
+        let windowController = WindowDemoWindowController(window: window)
         windowController.contentViewController = NSViewController()
         windowController.window?.center()
         windowController.showWindow(nil)
-        controllers.append(windowController)
+        windowControllers.append(windowController)
     }
+}
+
+class WindowDemoWindowController: NSWindowController {
     
     /*
      아래 3 메서드는 window 가 nib 이나 storyboard 파일을 통해 생성될 때만 실행되는 것 같다.

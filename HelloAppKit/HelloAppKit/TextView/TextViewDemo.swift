@@ -9,14 +9,13 @@ import AppKit
 
 // Mastering macOS programming-Packt Publishing (2017), 209p
 
-class TextViewDemoController: NSViewController, DemoViewController {
+class TextViewDemoControllerRunner: SubRunner {
+}
+
+class TextViewDemoController: NSViewController {
 
     let padding: CGFloat = 20.0
     let spacing: CGFloat = 8.0
-
-    static func showDemo() {
-        DemoWindowManager.shared.makeWindow(title: "TextView Demo", viewController: Self())
-    }
 
     override func loadView() {
         let view = NSView()

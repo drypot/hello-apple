@@ -11,14 +11,16 @@ import Cocoa
 // 나중에 AppKit 가이드 쓸 때나 다른 사람들이 학습용도로 보기엔 이게 나을 듯.
 // 파일에 반복적으로 중복된 코드가 나타나도 나중에 한눈에 쭉 읽기 편하게 그대로 두는 것도 괜찮은 듯.
 
+class DemoListControllerRunner: SubRunner {
+}
+
 class DemoListController: NSViewController {
 
     let padding: CGFloat = 20.0
     let spacing: CGFloat = 8.0
 
     override func loadView() {
-        let view = NSView()
-        self.view = view
+        self.view = NSView()
         
         let stackView = NSStackView()
         stackView.orientation = .vertical
@@ -72,13 +74,8 @@ class DemoListController: NSViewController {
     }
     
     @objc func buttonClicked(_ sender: NSButton) {
-        let moduleName = Bundle.main.infoDictionary!["CFBundleName"] as! String
-        let typeName = moduleName + "." + sender.title + "DemoController"
-        guard let demoType = NSClassFromString(typeName) as? DemoViewController.Type else {
-            print("demo type not found for \(typeName)")
-            return
-        }
-        demoType.showDemo()
+        let runnerName = sender.title + "DemoControllerRunner"
+        SubRunner.runSubRunner(by: runnerName)
     }
 
 }

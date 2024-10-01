@@ -9,15 +9,14 @@ import Cocoa
 
 // Mastering macOS programming, Packt Publishing (2017), 7 장 참고
 
-class TableViewDemoController: NSViewController, DemoViewController {
+class TableViewDemoControllerRunner: SubRunner {
+}
+
+class TableViewDemoController: NSViewController {
 
     let padding: CGFloat = 20.0
     let spacing: CGFloat = 8.0
 
-    static func showDemo() {
-        DemoWindowManager.shared.makeWindow(title: "Table View", viewController: Self())
-    }
-    
     var personArrayWrapper = PersonArrayWrapper(content: [
         Person(name: "Kirk", busy: true, shirtColor: .blue),
         Person(name: "Scottie", busy: false, shirtColor: .red),

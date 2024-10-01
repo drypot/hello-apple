@@ -7,12 +7,11 @@
 
 import AppKit
 
-class ConstraintBuilderDemoController: NSViewController, DemoViewController {
+class ConstraintBuilderDemoControllerRunner: SubRunner {
+}
 
-    static func showDemo() {
-        DemoWindowManager.shared.makeWindow(title: "ConstraintBuilder Demo", viewController: Self())
-    }
-    
+class ConstraintBuilderDemoController: NSViewController {
+
     override func loadView() {
         let view = NSView()
         self.view = view

@@ -7,14 +7,13 @@
 
 import AppKit
 
-class GestureRecognizerDemoController: NSViewController, DemoViewController {
+class GestureRecognizerDemoControllerRunner: SubRunner {
+}
+
+class GestureRecognizerDemoController: NSViewController {
     
     let padding: CGFloat = 20.0
     let spacing: CGFloat = 8.0
-    
-    static func showDemo() {
-        DemoWindowManager.shared.makeWindow(title: "GestureRecognizer Demo", viewController: Self())
-    }
     
     override func loadView() {
         let view = NSView()
