@@ -13,8 +13,7 @@ class AddStackDemoControllerRunner: SubRunner {
 class AddStackDemoController: NSViewController {
 
     override func loadView() {
-        let view = NSView()
-        self.view = view
+        self.view = NSView()
 
         let constraints = ConstraintBuilder()
 

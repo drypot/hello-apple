@@ -18,12 +18,12 @@ class TextViewDemoController: NSViewController {
     let spacing: CGFloat = 8.0
 
     override func loadView() {
-        let view = NSView()
-        self.view = view
+        self.view = NSView()
         
         let stackView = NSStackView()
         stackView.orientation = .vertical
         stackView.spacing = spacing
+        stackView.distribution = .fillEqually
         stackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView)
         
@@ -31,7 +31,7 @@ class TextViewDemoController: NSViewController {
         
         NSLayoutConstraint.activate([
             stackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 600),
-            stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200),
+            stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 300),
             
             stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
             stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
@@ -47,7 +47,6 @@ class TextViewDemoController: NSViewController {
             textView.font = NSFont(name: "Helvetica", size: 24.0)
             
             textView.widthAnchor.constraint(greaterThanOrEqualToConstant: 600).isActive = true
-            textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 50).isActive = true
             stackView.addArrangedSubview(textView)
         }
         
@@ -92,42 +91,8 @@ class TextViewDemoController: NSViewController {
             textView.textStorage?.setAttributedString(str1)
             
             textView.widthAnchor.constraint(greaterThanOrEqualToConstant: 600).isActive = true
-            textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 300).isActive = true
             stackView.addArrangedSubview(textView)
         }
     }
-    
-    /*
-    override func loadView() {
-        let view = NSView()
-        let constraints = ConstraintBuilder()
-        
-        self.view = view
-        
-        addStack(to: view) { stackView in
-            stackView.orientation = .vertical
-            constraints.appendConstrant(for: stackView, stickTo: view)
-
-            let textView = NSTextView()
-            textView.string = "Hello, World!"
-            textView.font = NSFont(name: "Helvetica", size: 24.0)
-            stackView.addArrangedSubview(textView)
-            constraints.appendConstrant(for: textView, width: 600, height: 200)
-
-            let textView2 = NSTextView()
-            let str2 = NSMutableAttributedString(string: "Hello attributions!\n")
-            str2.addAttribute(
-                NSAttributedString.Key.foregroundColor,
-                value: NSColor.brown,
-                range: NSRange(location: 6, length: 12)
-            )
-            textView2.textStorage?.setAttributedString(str2)
-            stackView.addArrangedSubview(textView2)
-            constraints.appendConstrant(for: textView2, width: 600, height: 200)
-        }
-        
-        constraints.activate()
-    }
-    */
     
 }

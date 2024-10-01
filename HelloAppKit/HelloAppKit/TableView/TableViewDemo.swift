@@ -33,8 +33,7 @@ class TableViewDemoController: NSViewController {
     }
     
     override func loadView() {
-        let view = NSView()
-        self.view = view
+        self.view = NSView()
         
         let stackView = NSStackView()
         stackView.orientation = .vertical

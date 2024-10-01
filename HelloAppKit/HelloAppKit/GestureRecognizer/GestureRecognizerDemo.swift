@@ -16,10 +16,9 @@ class GestureRecognizerDemoController: NSViewController {
     let spacing: CGFloat = 8.0
     
     override func loadView() {
-        let view = NSView()
+        self.view = NSView()
         view.wantsLayer = true
         view.layer?.backgroundColor = .white
-        self.view = view
         
         let stackView = NSStackView()
         stackView.orientation = .vertical
