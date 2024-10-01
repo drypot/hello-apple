@@ -68,11 +68,6 @@ class DemoListController: NSViewController {
         NSLayoutConstraint.activate(constraints)
     }
         
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print("CodeListController viewDidLoad")
-    }
-    
     @objc func buttonClicked(_ sender: NSButton) {
         let runnerName = sender.title + "DemoControllerRunner"
         SubRunner.runSubRunner(by: runnerName)
