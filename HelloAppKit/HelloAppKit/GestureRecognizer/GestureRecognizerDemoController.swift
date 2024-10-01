@@ -12,8 +12,6 @@ class GestureRecognizerDemoController: NSViewController, DemoViewController {
     let padding: CGFloat = 20.0
     let spacing: CGFloat = 8.0
     
-    var childView1: NSView!
-    
     static func showDemo() {
         DemoWindowManager.shared.makeWindow(title: "GestureRecognizer Demo", viewController: Self())
     }
@@ -45,7 +43,6 @@ class GestureRecognizerDemoController: NSViewController, DemoViewController {
     
     private func addSubviews(to stackView: NSStackView) {
         let childView1 = NSView()
-        self.childView1 = childView1
         childView1.wantsLayer = true
         childView1.layer?.backgroundColor = NSColor.red.cgColor
         childView1.translatesAutoresizingMaskIntoConstraints = false
@@ -61,7 +58,7 @@ class GestureRecognizerDemoController: NSViewController, DemoViewController {
     }
 
     @objc func handleClick(_ sender: NSClickGestureRecognizer) {
-        let locationInView = sender.location(in: childView1)
+        let locationInView = sender.location(in: sender.view)
         print("Mouse clicked at: \(locationInView)")
     }
 
