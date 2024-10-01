@@ -1,5 +1,5 @@
 //
-//  GestureRecognizerDemo.swift
+//  GraphicsDemo.swift
 //  HelloAppKit
 //
 //  Created by Kyuhyun Park on 9/30/24.
@@ -7,18 +7,16 @@
 
 import AppKit
 
-class GestureRecognizerDemoControllerRunner: SubRunner {
+class GraphicsDemoControllerRunner: SubRunner {
 }
 
-class GestureRecognizerDemoController: NSViewController {
+class GraphicsDemoController: NSViewController {
     
     let padding: CGFloat = 20.0
     let spacing: CGFloat = 8.0
     
     override func loadView() {
         self.view = NSView()
-        view.wantsLayer = true
-        view.layer?.backgroundColor = .white
         
         let stackView = NSStackView()
         stackView.orientation = .vertical
@@ -40,24 +38,29 @@ class GestureRecognizerDemoController: NSViewController {
     }
     
     private func addSubviews(to stackView: NSStackView) {
-        let childView1 = NSView()
-        childView1.wantsLayer = true
-        childView1.layer?.backgroundColor = NSColor.red.cgColor
-        childView1.translatesAutoresizingMaskIntoConstraints = false
-        stackView.addArrangedSubview(childView1)
-        
-        NSLayoutConstraint.activate([
-            childView1.widthAnchor.constraint(greaterThanOrEqualToConstant: 100),
-            childView1.heightAnchor.constraint(greaterThanOrEqualToConstant: 100),
-        ])
-        
-        let clickGestureRecognizer = NSClickGestureRecognizer(target: self, action: #selector(handleClick(_:)))
-        childView1.addGestureRecognizer(clickGestureRecognizer)
-    }
+        do {
+            let button = GraphicButton()
+            button.translatesAutoresizingMaskIntoConstraints = false
+            stackView.addArrangedSubview(button)
+            
+            NSLayoutConstraint.activate([
+                button.widthAnchor.constraint(equalToConstant: 200),
+                button.heightAnchor.constraint(equalToConstant: 200),
+            ])
+        }
 
-    @objc func handleClick(_ sender: NSClickGestureRecognizer) {
-        let locationInView = sender.location(in: sender.view)
-        print("Mouse clicked at: \(locationInView)")
-    }
+        do {
+            let button = GraphicButton()
+            button.roundIcon = false
+            button.translatesAutoresizingMaskIntoConstraints = false
+            stackView.addArrangedSubview(button)
+            
+            NSLayoutConstraint.activate([
+                button.widthAnchor.constraint(equalToConstant: 200),
+                button.heightAnchor.constraint(equalToConstant: 200),
+            ])
+        }
 
+    }
+    
 }

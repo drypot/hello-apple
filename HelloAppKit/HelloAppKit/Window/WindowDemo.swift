@@ -1,5 +1,5 @@
 //
-//  WindowDemoController.swift
+//  WindowDemo.swift
 //  HelloAppKit
 //
 //  Created by Kyuhyun Park on 9/18/24.

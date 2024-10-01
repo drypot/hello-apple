@@ -1,5 +1,5 @@
 //
-//  CustomViewDemoController.swift
+//  CustomViewDemo.swift
 //  HelloAppKit
 //
 //  Created by Kyuhyun Park on 9/30/24.

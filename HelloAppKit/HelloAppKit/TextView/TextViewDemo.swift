@@ -1,5 +1,5 @@
 //
-//  TextViewDemoController.swift
+//  TextViewDemo.swift
 //  HelloAppKit
 //
 //  Created by Kyuhyun Park on 9/21/24.
