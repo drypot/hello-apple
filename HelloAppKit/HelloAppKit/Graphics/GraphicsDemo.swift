@@ -19,7 +19,7 @@ class GraphicsDemoController: NSViewController {
         self.view = NSView()
         
         let stackView = NSStackView()
-        stackView.orientation = .vertical
+        stackView.orientation = .horizontal
         stackView.spacing = spacing
         stackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView)
@@ -61,6 +61,17 @@ class GraphicsDemoController: NSViewController {
             ])
         }
 
+        do {
+            let clock = DialClock()
+            clock.translatesAutoresizingMaskIntoConstraints = false
+            stackView.addArrangedSubview(clock)
+            
+            NSLayoutConstraint.activate([
+                clock.widthAnchor.constraint(equalToConstant: 200),
+                clock.heightAnchor.constraint(equalToConstant: 200),
+            ])
+        }
+        
     }
     
 }
