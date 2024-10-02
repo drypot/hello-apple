@@ -9,7 +9,7 @@ import Cocoa
 
 // Mastering macOS programming, Packt Publishing (2017), 7 장 참고
 
-class TableViewDemoControllerRunner: SubRunner {
+class TableViewDemoRunner: SubRunner {
 }
 
 class TableViewDemoController: NSViewController {

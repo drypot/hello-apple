@@ -7,7 +7,7 @@
 
 import AppKit
 
-class GestureRecognizerDemoControllerRunner: SubRunner {
+class GestureRecognizerDemoRunner: SubRunner {
 }
 
 class GestureRecognizerDemoController: NSViewController {

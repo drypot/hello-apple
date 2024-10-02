@@ -12,7 +12,7 @@ struct StringTests {
 
     @Test func testDropSuffix() async throws {
         #expect("HelloWorld".dropSuffix("World") == "Hello")
-        #expect("HelloWorld".dropSuffix("Groud") == "HelloWorld")
+        #expect("HelloWorld".dropSuffix("Ground") == "HelloWorld")
     }
 
 }

@@ -7,7 +7,7 @@
 
 import AppKit
 
-class ConstraintBuilderDemoControllerRunner: SubRunner {
+class ConstraintBuilderDemoRunner: SubRunner {
 }
 
 class ConstraintBuilderDemoController: NSViewController {

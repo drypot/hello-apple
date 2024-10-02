@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         print("AppDelegate applicationDidFinishLaunching")
-        DemoListControllerRunner().run()
+        DemoListRunner().run()
    }
 
     func applicationWillTerminate(_ aNotification: Notification) {

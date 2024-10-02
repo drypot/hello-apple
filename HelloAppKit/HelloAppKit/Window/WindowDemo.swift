@@ -7,7 +7,7 @@
 
 import AppKit
 
-class WindowDemoControllerRunner: SubRunner {
+class WindowDemoRunner: SubRunner {
 
     private var windowControllers = [NSWindowController]()
 

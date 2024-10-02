@@ -9,7 +9,7 @@ import AppKit
 
 // Mastering macOS programming-Packt Publishing (2017), 209p
 
-class TextViewDemoControllerRunner: SubRunner {
+class TextViewDemoRunner: SubRunner {
 }
 
 class TextViewDemoController: NSViewController {

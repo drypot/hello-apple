@@ -7,7 +7,7 @@
 
 import AppKit
 
-class AddStackDemoControllerRunner: SubRunner {
+class AddStackDemoRunner: SubRunner {
 }
 
 class AddStackDemoController: NSViewController {

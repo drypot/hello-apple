@@ -7,7 +7,8 @@
 
 import AppKit
 
-class WindowBuilderDemoControllerRunner: SubRunner {
+class WindowBuilderDemoRunner: SubRunner {
+    
     override func run() {
         do {
             // show center
@@ -48,4 +49,5 @@ class WindowBuilderDemoControllerRunner: SubRunner {
             .retainWindow()
         }
     }
+    
 }

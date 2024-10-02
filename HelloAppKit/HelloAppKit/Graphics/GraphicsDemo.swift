@@ -7,7 +7,7 @@
 
 import AppKit
 
-class GraphicsDemoControllerRunner: SubRunner {
+class GraphicsDemoRunner: SubRunner {
 }
 
 class GraphicsDemoController: NSViewController {
