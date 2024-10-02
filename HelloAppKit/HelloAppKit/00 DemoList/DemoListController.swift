@@ -46,12 +46,10 @@ class DemoListController: NSViewController {
                 
         func addButton(_ title: String) {
             let button: NSButton = NSButton(title: title, target: self, action: #selector(buttonClicked))
-            button.bezelStyle = .rounded
-            //button.translatesAutoresizingMaskIntoConstraints = false
             stackView.addArrangedSubview(button)
             constraints.append(contentsOf: [
-                button.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 0),
-                button.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 0),
+                button.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+                button.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
             ])
         }
 
@@ -65,6 +63,8 @@ class DemoListController: NSViewController {
         addButton("CustomView")
         addButton("GestureRecognizer")
         addButton("Graphics")
+        addButton("Subclasses")
+    
         
         NSLayoutConstraint.activate(constraints)
     }

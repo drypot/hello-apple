@@ -6,7 +6,18 @@
 	objectVersion = 74;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		0030B9512CACF79F00C847E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00F832442C7DEDE400742EF4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 00F8324B2C7DEDE400742EF4;
+			remoteInfo = HelloAppKit;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		0030B94D2CACF79F00C847E2 /* HelloAppKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloAppKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00F8324C2C7DEDE400742EF4 /* HelloAppKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloAppKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -32,9 +43,17 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		001131F32C999F2E0099CB9B /* HelloAppKit */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (001132002C999F2E0099CB9B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 001132012C999F2E0099CB9B /* PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = HelloAppKit; sourceTree = "<group>"; };
+		0030B94E2CACF79F00C847E2 /* HelloAppKitTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = HelloAppKitTests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0030B94A2CACF79F00C847E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		00F832492C7DEDE400742EF4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -49,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				001131F32C999F2E0099CB9B /* HelloAppKit */,
+				0030B94E2CACF79F00C847E2 /* HelloAppKitTests */,
 				00F8324D2C7DEDE400742EF4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				00F8324C2C7DEDE400742EF4 /* HelloAppKit.app */,
+				0030B94D2CACF79F00C847E2 /* HelloAppKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -64,6 +85,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0030B94C2CACF79F00C847E2 /* HelloAppKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0030B9532CACF79F00C847E2 /* Build configuration list for PBXNativeTarget "HelloAppKitTests" */;
+			buildPhases = (
+				0030B9492CACF79F00C847E2 /* Sources */,
+				0030B94A2CACF79F00C847E2 /* Frameworks */,
+				0030B94B2CACF79F00C847E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0030B9522CACF79F00C847E2 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				0030B94E2CACF79F00C847E2 /* HelloAppKitTests */,
+			);
+			name = HelloAppKitTests;
+			packageProductDependencies = (
+			);
+			productName = HelloAppKitTests;
+			productReference = 0030B94D2CACF79F00C847E2 /* HelloAppKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		00F8324B2C7DEDE400742EF4 /* HelloAppKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00F8325B2C7DEDE500742EF4 /* Build configuration list for PBXNativeTarget "HelloAppKit" */;
@@ -91,9 +135,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1540;
+				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
+					0030B94C2CACF79F00C847E2 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 00F8324B2C7DEDE400742EF4;
+					};
 					00F8324B2C7DEDE400742EF4 = {
 						CreatedOnToolsVersion = 15.4;
 					};
@@ -113,11 +161,19 @@
 			projectRoot = "";
 			targets = (
 				00F8324B2C7DEDE400742EF4 /* HelloAppKit */,
+				0030B94C2CACF79F00C847E2 /* HelloAppKitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0030B94B2CACF79F00C847E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		00F8324A2C7DEDE400742EF4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -128,6 +184,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0030B9492CACF79F00C847E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		00F832482C7DEDE400742EF4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -137,7 +200,69 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		0030B9522CACF79F00C847E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 00F8324B2C7DEDE400742EF4 /* HelloAppKit */;
+			targetProxy = 0030B9512CACF79F00C847E2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		0030B9542CACF79F00C847E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XFTC3W2MNQ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.drypot.HelloAppKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HelloAppKit.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HelloAppKit";
+			};
+			name = Debug;
+		};
+		0030B9552CACF79F00C847E2 /* Dev */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XFTC3W2MNQ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.drypot.HelloAppKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HelloAppKit.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HelloAppKit";
+			};
+			name = Dev;
+		};
+		0030B9562CACF79F00C847E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XFTC3W2MNQ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.drypot.HelloAppKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HelloAppKit.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HelloAppKit";
+			};
+			name = Release;
+		};
 		00AED45F2C86AC9500B1D25C /* Dev */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -412,6 +537,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0030B9532CACF79F00C847E2 /* Build configuration list for PBXNativeTarget "HelloAppKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0030B9542CACF79F00C847E2 /* Debug */,
+				0030B9552CACF79F00C847E2 /* Dev */,
+				0030B9562CACF79F00C847E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		00F832472C7DEDE400742EF4 /* Build configuration list for PBXProject "HelloAppKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
