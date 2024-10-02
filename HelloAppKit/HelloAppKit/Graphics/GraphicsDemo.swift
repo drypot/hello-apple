@@ -72,6 +72,17 @@ class GraphicsDemoController: NSViewController {
             ])
         }
         
+        do {
+            let clock = PieClock()
+            clock.translatesAutoresizingMaskIntoConstraints = false
+            stackView.addArrangedSubview(clock)
+            
+            NSLayoutConstraint.activate([
+                clock.widthAnchor.constraint(equalToConstant: 200),
+                clock.heightAnchor.constraint(equalToConstant: 200),
+            ])
+        }
+        
     }
     
 }

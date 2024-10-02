@@ -34,14 +34,6 @@ class DialClock: NSView {
         return CGPoint(x:bounds.width / 2.0, y: bounds.height / 2.0)
     }
 
-    override init(frame frameRect: NSRect) {
-        super.init(frame: frameRect)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         
