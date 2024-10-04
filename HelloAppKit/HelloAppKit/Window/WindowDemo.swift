@@ -9,8 +9,6 @@ import AppKit
 
 class WindowDemoRunner: SubRunner {
 
-    private var windowControllers = [NSWindowController]()
-
     override func run() {
         let window = NSWindow(
             contentRect: .zero,
@@ -24,29 +22,26 @@ class WindowDemoRunner: SubRunner {
         windowController.contentViewController = NSViewController()
         windowController.window?.center()
         windowController.showWindow(nil)
-        windowControllers.append(windowController)
     }
 }
 
-class WindowDemoWindowController: NSWindowController {
+class WindowDemoWindowController: NSWindowController, NSWindowDelegate {
     
-    /*
-     아래 3 메서드는 window 가 nib 이나 storyboard 파일을 통해 생성될 때만 실행되는 것 같다.
-     WindowController 생성시 window 를 넘겨준 경우엔 실행될 타이밍이 오지 않는다.
-     */
+    private var selfRetainer: WindowDemoWindowController?
     
-    override func loadWindow() {
-        print("CodeListWindowController loadWindow")
+    override init(window: NSWindow?) {
+        super.init(window: window)
+        self.selfRetainer = self
+        self.window?.delegate = self
     }
     
-    override func windowWillLoad() {
-        super.windowWillLoad()
-        print("CodeListWindowController windowWillLoad")
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-    
-    override func windowDidLoad() {
-        super.windowDidLoad()
-        print("CodeListWindowController windowDidLoad")
+
+    func windowWillClose(_ notification: Notification) {
+        print("WindowDelegate windowWillClose")
+        selfRetainer = nil
     }
-    
+
 }
