@@ -19,7 +19,7 @@ class DemoListController: NSViewController {
     let padding: CGFloat = 20.0
     let spacing: CGFloat = 8.0
 
-    var subRunners = [String: SubRunner.Type]()
+    var subRunnerTypes = [String: SubRunner.Type]()
     
     override func loadView() {
         self.view = NSView()
@@ -65,7 +65,7 @@ class DemoListController: NSViewController {
             .forEach { subRunnerType in
                 let className = String(subRunnerType.className().split(separator: ".").last!)
                 let buttonTitle = className.dropSuffix("Runner").dropSuffix("Controller").dropSuffix("Demo")
-                subRunners[buttonTitle] = subRunnerType
+                subRunnerTypes[buttonTitle] = subRunnerType
                 addButton(buttonTitle)
             }
         
@@ -73,7 +73,7 @@ class DemoListController: NSViewController {
     }
         
     @objc func buttonClicked(_ sender: NSButton) {
-        let subRunnerType = subRunners[sender.title]!
+        let subRunnerType = subRunnerTypes[sender.title]!
         subRunnerType.init().run()
     }
 
