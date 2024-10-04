@@ -22,7 +22,7 @@ class SelfRetainingWindowController: NSWindowController, NSWindowDelegate {
     }
 
     func windowWillClose(_ notification: Notification) {
-        //print("SubRunnerWindowController windowWillClose")
+        //print("SelfRetainingWindowController windowWillClose")
         selfRetainer = nil
     }
 
