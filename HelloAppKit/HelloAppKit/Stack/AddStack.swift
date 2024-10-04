@@ -7,12 +7,13 @@
 
 import AppKit
 
-func addStack(to parent: NSView, makeSubviews: (NSStackView) -> Void) {
+func addStackView(to parentView: NSView, addSubviews: (NSStackView) -> Void) {
     let stackView = NSStackView()
-    if let parentStackView = parent as? NSStackView {
+    stackView.translatesAutoresizingMaskIntoConstraints = false
+    if let parentStackView = parentView as? NSStackView {
         parentStackView.addArrangedSubview(stackView)
     } else {
-        parent.addSubview(stackView)
+        parentView.addSubview(stackView)
     }
-    makeSubviews(stackView)
+    addSubviews(stackView)
 }

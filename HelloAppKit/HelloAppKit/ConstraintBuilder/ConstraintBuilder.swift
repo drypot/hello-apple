@@ -22,24 +22,25 @@ class ConstraintBuilder {
         self.constraints.append(contentsOf: constraints)
     }
     
-    func appendConstrant(for view: NSView, width: CGFloat, height: CGFloat) {
-        view.translatesAutoresizingMaskIntoConstraints = false
+    func setSize(of view: NSView, width: CGFloat, height: CGFloat) {
         constraints.append(view.widthAnchor.constraint(equalToConstant: width))
         constraints.append(view.heightAnchor.constraint(equalToConstant: height))
     }
     
-    func appendConstrant(for view: NSView, width: CGFloat) {
-        view.translatesAutoresizingMaskIntoConstraints = false
+    func setWidth(of view: NSView, width: CGFloat) {
         constraints.append(view.widthAnchor.constraint(equalToConstant: width))
     }
     
-    func appendConstrant(for view: NSView, height: CGFloat) {
-        view.translatesAutoresizingMaskIntoConstraints = false
+    func setHeight(of view: NSView, height: CGFloat) {
         constraints.append(view.heightAnchor.constraint(equalToConstant: height))
     }
+
+    func setMinSize(of view: NSView, width: CGFloat, height: CGFloat) {
+        constraints.append(view.widthAnchor.constraint(greaterThanOrEqualToConstant: width))
+        constraints.append(view.heightAnchor.constraint(greaterThanOrEqualToConstant: height))
+    }
     
-    func appendConstrant(for view: NSView, stickTo parent: NSView, padding: CGFloat = 20) {
-        view.translatesAutoresizingMaskIntoConstraints = false
+    func stickEdges(of view: NSView, to parent: NSView, padding: CGFloat = 20) {
         view.topAnchor.constraint(equalTo: parent.topAnchor, constant: padding).isActive = true
         view.bottomAnchor.constraint(equalTo: parent.bottomAnchor, constant: -padding).isActive = true
         view.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: padding).isActive = true

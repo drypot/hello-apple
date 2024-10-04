@@ -19,18 +19,27 @@ class ConstraintBuilderDemoController: NSViewController {
 
         let stackView = NSStackView()
         stackView.orientation = .vertical
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView)
-        constraints.appendConstrant(for: stackView, stickTo: view)
         
-        let button1 = NSButton(title: "Button 1", target: nil, action: nil)
-        stackView.addArrangedSubview(button1)
+        constraints.stickEdges(of: stackView, to: view)
+        constraints.setMinSize(of: stackView, width: 600, height: 400)
         
-        let button2 = NSButton(title: "Button 2", target: nil, action: nil)
-        stackView.addArrangedSubview(button2)
-
-        let button3 = NSButton(title: "Button 3", target: nil, action: nil)
-        stackView.addArrangedSubview(button3)
-
+        do {
+            let button = NSButton(title: "Button 1", target: nil, action: nil)
+            stackView.addArrangedSubview(button)
+        }
+        
+        do {
+            let button = NSButton(title: "Button 2", target: nil, action: nil)
+            stackView.addArrangedSubview(button)
+        }
+        
+        do {
+            let button = NSButton(title: "Button 3", target: nil, action: nil)
+            stackView.addArrangedSubview(button)
+        }
+        
         constraints.activate()
     }
     

@@ -17,11 +17,11 @@ class AddStackDemoController: NSViewController {
 
         let constraints = ConstraintBuilder()
 
-        addStack(to: view) { stackView in
+        addStackView(to: view) { stackView in
             stackView.orientation = .vertical
-            constraints.appendConstrant(for: stackView, stickTo: view)
+            constraints.stickEdges(of: stackView, to: view)
             
-            addStack(to: stackView) { stackView in
+            addStackView(to: stackView) { stackView in
                 stackView.orientation = .vertical
 
                 let button1 = NSButton(title: "Button 1", target: nil, action: nil)
@@ -34,7 +34,7 @@ class AddStackDemoController: NSViewController {
                 stackView.addArrangedSubview(button3)
             }
             
-            addStack(to: stackView) { stackView in
+            addStackView(to: stackView) { stackView in
                 let button4 = NSButton(title: "Button 4", target: nil, action: nil)
                 stackView.addArrangedSubview(button4)
                 
