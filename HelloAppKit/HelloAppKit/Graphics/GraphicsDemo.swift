@@ -10,34 +10,10 @@ import AppKit
 class GraphicsDemoRunner: SubRunner {
 }
 
-class GraphicsDemoController: NSViewController {
-    
-    let padding: CGFloat = 20.0
-    let spacing: CGFloat = 8.0
-    
-    override func loadView() {
-        self.view = NSView()
+class GraphicsDemoController: EasyStackController {
         
-        let stackView = NSStackView()
+    override func addSubviews(to stackView: NSStackView) {
         stackView.orientation = .horizontal
-        stackView.spacing = spacing
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(stackView)
-        
-        addSubviews(to: stackView)
-        
-        NSLayoutConstraint.activate([
-            stackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 600),
-            stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200),
-            
-            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-        ])
-    }
-    
-    private func addSubviews(to stackView: NSStackView) {
         do {
             let button = GraphicButton()
             button.translatesAutoresizingMaskIntoConstraints = false

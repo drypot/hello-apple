@@ -12,35 +12,12 @@ import AppKit
 class TextViewDemoRunner: SubRunner {
 }
 
-class TextViewDemoController: NSViewController {
+class TextViewDemoController: EasyStackController {
 
-    let padding: CGFloat = 20.0
-    let spacing: CGFloat = 8.0
-
-    override func loadView() {
-        self.view = NSView()
-        
-        let stackView = NSStackView()
+    override func addSubviews(to stackView: NSStackView) {
         stackView.orientation = .vertical
-        stackView.spacing = spacing
         stackView.distribution = .fillEqually
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(stackView)
         
-        addSubviews(to: stackView)
-        
-        NSLayoutConstraint.activate([
-            stackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 600),
-            stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 300),
-            
-            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-        ])
-    }
-    
-    private func addSubviews(to stackView: NSStackView) {
         do {
             let textView = NSTextView()
             textView.string = "Hello, World!"

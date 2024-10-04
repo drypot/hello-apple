@@ -15,36 +15,11 @@ import AppKit
 class CustomTextViewDemoRunner: SubRunner {
 }
 
-class CustomTextViewDemoController: NSViewController {
+class CustomTextViewDemoController: EasyStackController {
     
-    let padding: CGFloat = 20.0
-    let spacing: CGFloat = 8.0
-
     var customTextStorage: CustomTextStorage?
     
-    override func loadView() {
-        self.view = NSView()
-        
-        let stackView = NSStackView()
-        stackView.orientation = .vertical
-        stackView.spacing = spacing
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(stackView)
-        
-        addSubviews(to: stackView)
-        
-        NSLayoutConstraint.activate([
-            stackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 600),
-            stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200),
-            
-            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-        ])
-    }
-    
-    private func addSubviews(to stackView: NSStackView) {
+    override func addSubviews(to stackView: NSStackView) {
         let container = NSTextContainer()
         container.widthTracksTextView = true
         
