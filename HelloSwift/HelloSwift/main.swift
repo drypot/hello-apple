@@ -7,5 +7,4 @@
 
 import Foundation
 
-//benchmarkClassVsStruct()
-dumpFile()
+print("Hello, World!")
