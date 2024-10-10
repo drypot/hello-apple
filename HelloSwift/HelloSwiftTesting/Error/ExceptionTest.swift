@@ -1,5 +1,5 @@
 //
-//  ExceptionTesting.swift
+//  ExceptionTest.swift
 //  HelloSwiftTesting
 //
 //  Created by Kyuhyun Park on 10/8/24.
@@ -14,7 +14,7 @@ import Testing
 // you simply create a struct, or a class, or an enum, and
 // declare it to conform to the Error protocol
 
-struct ExceptionTesting {
+struct ExceptionTest {
     
     enum MathError: Error, Equatable {
         case divideByZeroError

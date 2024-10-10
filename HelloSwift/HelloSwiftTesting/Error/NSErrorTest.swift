@@ -1,5 +1,5 @@
 //
-//  NSErrorTesting.swift
+//  NSErrorTest.swift
 //  HelloSwiftTesting
 //
 //  Created by Kyuhyun Park on 10/10/24.
@@ -8,7 +8,7 @@
 import Foundation
 import Testing
 
-struct NSErrorTesting {
+struct NSErrorTest {
 
     let url1 = URL(fileURLWithPath: "/non-existent")
     let url2 = URL(fileURLWithPath: "/someLocation")
