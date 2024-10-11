@@ -43,9 +43,19 @@ class DemoListController: NSViewController {
         ])
     }
     
+    
+    
     private func addSubviews(to stackView: NSStackView) {
         var constraints: [NSLayoutConstraint] = []
-                
+
+        func addSubRunner(_ subRunnerType: SubRunner.Type) {
+            let className = String(subRunnerType.className().split(separator: ".").last!)
+            //print(className)
+            let buttonTitle = className.dropSuffix("Runner").dropSuffix("Controller").dropSuffix("Demo")
+            subRunnerTypes[buttonTitle] = subRunnerType
+            addButton(buttonTitle)
+        }
+        
         func addButton(_ title: String) {
             let button: NSButton = NSButton(title: title, target: self, action: #selector(buttonClicked))
             stackView.addArrangedSubview(button)
@@ -55,23 +65,35 @@ class DemoListController: NSViewController {
             ])
         }
 
-        subclasses(of: SubRunner.self)
-            .filter {
-                $0 != DemoListRunner.self
-            }
-            .sorted {
-                $0.className() < $1.className()
-            }
-            .forEach { subRunnerType in
-                let className = String(subRunnerType.className().split(separator: ".").last!)
-                let buttonTitle = className.dropSuffix("Runner").dropSuffix("Controller").dropSuffix("Demo")
-                subRunnerTypes[buttonTitle] = subRunnerType
-                addButton(buttonTitle)
-            }
-        
+//        subclasses(of: SubRunner.self)
+//            .filter {
+//                $0 != DemoListRunner.self
+//            }
+//            .sorted {
+//                $0.className() < $1.className()
+//            }
+//            .forEach(addSubRunner)
+
+        addSubRunner(WindowDemoRunner.self)
+        addSubRunner(WindowBuilderDemoRunner.self)
+        addSubRunner(ViewDemoRunner.self)
+        addSubRunner(AddStackDemoRunner.self)
+        addSubRunner(EasyStackControllerDemoRunner.self)
+        addSubRunner(ConstraintBuilderDemoRunner.self)
+        addSubRunner(TextViewDemoRunner.self)
+        addSubRunner(CustomTextViewDemoRunner.self)
+        addSubRunner(TableViewDemoRunner.self)
+        addSubRunner(GestureRecognizerDemoRunner.self)
+        addSubRunner(GraphicsDemoRunner.self)
+        addSubRunner(AnimationDemoRunner.self)
+
+        addSubRunner(SubclassesTestRunner.self)
+
         NSLayoutConstraint.activate(constraints)
     }
         
+    
+    
     @objc func buttonClicked(_ sender: NSButton) {
         let subRunnerType = subRunnerTypes[sender.title]!
         subRunnerType.init().run()
