@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  DemoListView.swift
 //  HelloSwiftUI
 //
 //  Created by Kyuhyun Park on 9/17/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct DemoListView: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -20,5 +20,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    DemoListView()
 }
