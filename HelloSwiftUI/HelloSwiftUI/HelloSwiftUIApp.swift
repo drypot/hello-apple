@@ -16,7 +16,25 @@ struct HelloSwiftUIApp: App {
 
         DemoWindowGroup { ButtonDemoView() }
         DemoWindowGroup { TaskDemoView() }
+    }
+}
 
+struct DemoListView: View {
+    @Environment(\.openWindow) private var openWindow
+    @Environment(\.dismissWindow) private var dismissWindow
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            ForEach(DemoWindowGroupList.typeNames.indices, id: \.self) { index in
+                let typeName = DemoWindowGroupList.typeNames[index]
+
+                Button(typeName) {
+                    openWindow(id: typeName)
+                }
+            }
+        }
+        .frame(minWidth: 200, alignment: .topLeading)
+        .padding()
     }
 }
 
@@ -37,25 +55,5 @@ struct DemoWindowGroup<Content: View>: Scene {
         WindowGroup(typeName, id: typeName) {
             content
         }
-    }
-}
-
-struct DemoListView: View {
-    @Environment(\.openWindow) private var openWindow
-    @Environment(\.dismissWindow) private var dismissWindow
-
-    var body: some View {
-        VStack(alignment: .leading) {
-            ForEach(DemoWindowGroupList.typeNames.indices, id: \.self) { index in
-                let typeName = DemoWindowGroupList.typeNames[index]
-
-                Button(typeName) {
-                    openWindow(id: typeName)
-                }
-
-            }
-        }
-        .frame(minWidth: 200, alignment: .topLeading)
-        .padding()
     }
 }
