@@ -10,17 +10,12 @@ import SwiftUI
 @main
 struct HelloSwiftUIApp: App {
     var body: some Scene {
-        WindowGroup("Main Window") {
+        WindowGroup("SwiftUI Demo List") {
             DemoListView()
         }
 
-        DemoWindowGroup {
-            ContentViewTwo()
-        }
-
-        DemoWindowGroup {
-            ContentViewThree()
-        }
+        DemoWindowGroup { ButtonDemoView() }
+        DemoWindowGroup { TaskDemoView() }
 
     }
 }
@@ -50,38 +45,17 @@ struct DemoListView: View {
     @Environment(\.dismissWindow) private var dismissWindow
 
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             ForEach(DemoWindowGroupList.typeNames.indices, id: \.self) { index in
                 let typeName = DemoWindowGroupList.typeNames[index]
 
-                Button {
+                Button(typeName) {
                     openWindow(id: typeName)
-                } label: {
-                    Text(typeName)
-                        .font(.headline)
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
                 }
-                .buttonStyle(.plain)
 
             }
         }
-//        .frame(maxWidth: .infinity, alignment: .top)
-    }
-}
-
-struct ContentViewTwo: View {
-    var body: some View {
-        Text("This is the second window!")
-            .padding()
-    }
-}
-
-struct ContentViewThree: View {
-    var body: some View {
-        Text("This is the third window!")
-            .padding()
+        .frame(minWidth: 200, alignment: .topLeading)
+        .padding()
     }
 }
